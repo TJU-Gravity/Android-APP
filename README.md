@@ -20,6 +20,12 @@ https://github.com/square/okhttp
 
 
 
+### json parser
+
+https://github.com/FasterXML/jackson
+
+
+
 ### 其他
 
 1. 底部导航的图标颜色有问题
