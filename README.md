@@ -8,13 +8,19 @@ https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel
 
 https://www.jianshu.com/p/fc814a20c452
 
-### UI框架
+### UI框架(集合)
 
 https://www.cnblogs.com/hwb04160011/p/7027317.html
 
-### Material Menu 
+https://github.com/wasabeef/awesome-android-ui
 
-https://github.com/balysv/material-menu
+### Material Design(已导入项目)
+
+https://github.com/mikepenz/MaterialDrawer
+
+### Menu
+
+https://uxplanet.org/16-android-menu-open-source-ui-animation-components-libraries-java-kotlin-9f3e54f64280
 
 
 
