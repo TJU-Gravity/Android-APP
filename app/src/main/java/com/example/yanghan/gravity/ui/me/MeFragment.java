@@ -22,6 +22,7 @@ public class MeFragment extends Fragment {
         return new MeFragment();
     }
 
+    @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
