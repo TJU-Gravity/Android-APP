@@ -50,26 +50,8 @@ public class MeActivity extends AppCompatActivity {
              .withSavedInstance(savedInstanceState)
              .withFullscreen(true)
              .build();
-               /*
-                .withDisplayBelowStatusBar(false)
-                .withTranslucentStatusBar(false)
-                .withToolbar((Toolbar)findViewById(R.id.toolbar))
-                .withDrawerLayout(R.layout.material_drawer_fits_not)
-                .addDrawerItems(
-                        new PrimaryDrawerItem().withName("Home").withIcon(FontAwesome.Icon.faw_home),
-                        new SecondaryDrawerItem().withName("Settings").withIcon(FontAwesome.Icon.faw_cog)
-                )
-                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
-                    @Override
-                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        if (drawerItem instanceof Nameable) {
-                            Toast.makeText(MeActivity.this, ((Nameable) drawerItem).getName().getText(MeActivity.this), Toast.LENGTH_SHORT).show();
-                        }
 
-                        return false;
-                    }
-                }).build();
-*/
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(false);
 
