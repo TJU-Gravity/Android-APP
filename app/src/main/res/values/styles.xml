@@ -4,8 +4,8 @@
     <style name="AppTheme" parent="MaterialDrawerTheme.Light.DarkToolbar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#315668</item>
-        <item name="colorPrimaryDark">#25414f</item>
-        <item name="colorAccent">#9C3521</item>
+        <item name="colorPrimaryDark">#25414e</item>
+        <item name="colorAccent">#25414e</item>
 
 
     </style>
@@ -19,6 +19,22 @@
         <item name="colorAccent">#9C3521</item>
     </style>
 
+
+    <style name="TextStyle">
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:layout_marginLeft">2dp</item>
+        <item name="android:layout_marginRight">2dp</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+    <style name="TextStyle.Heading" parent="TextStyle">
+        <item name="android:textSize">16sp</item>
+
+    </style>
+    <style name="TextStyle.Title" >
+
+        <item name="android:textSize">14sp</item>
+    </style>
 
 
 </resources>

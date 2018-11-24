@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.example.yanghan.gravity.ui.me.MeFragment;
+import com.example.yanghan.gravity.ui.me.MeActivity;
 import com.example.yanghan.gravity.ui.news.NewsFragment;
 import com.example.yanghan.gravity.ui.main.MainFragment;
 
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         IProfile profile = new ProfileDrawerItem().withName("Mike Penz").withEmail("mikepenz@gmail.com").withIcon(getResources().getDrawable(R.drawable.headshot));
         headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
-                .withHeaderBackground(R.color.md_white_1000)
+                .withHeaderBackground(getResources().getDrawable(R.drawable.header_test))
                 .withCompactStyle(false)
                 .addProfiles(
                         profile)
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         PrimaryDrawerItem home = new PrimaryDrawerItem().withName("HOME").withIcon(R.drawable.gravity_inact).withIdentifier(1).withSelectable(false);
         PrimaryDrawerItem news = new PrimaryDrawerItem().withName("NEWS").withIcon(R.drawable.news_inact).withIdentifier(2).withSelectable(false);
-        PrimaryDrawerItem team = new PrimaryDrawerItem().withName("TEAM").withIcon(R.drawable.team_inact).withIdentifier(3).withSelectable(false);
+        PrimaryDrawerItem team = new PrimaryDrawerItem().withName("TEAM").withIcon(R.drawable.team_fixedxxxhdpi).withIdentifier(3).withSelectable(false);
         PrimaryDrawerItem me = new PrimaryDrawerItem().withName("ME").withIcon(R.drawable.me_inact).withIdentifier(4).withSelectable(false);
         PrimaryDrawerItem setting=new PrimaryDrawerItem().withName("SETTING").withIdentifier(10).withSelectable(false);
 
