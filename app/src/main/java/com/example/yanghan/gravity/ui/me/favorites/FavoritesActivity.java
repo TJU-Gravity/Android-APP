@@ -29,11 +29,11 @@ public class FavoritesActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.favorites_activity);
+        setContentView(R.layout.activity_favorites);
 
         mViewModel = ViewModelProviders.of(this).get(FavoritesViewModel.class);
 
-        binding=DataBindingUtil.setContentView(this,R.layout.favorites_activity);
+        binding=DataBindingUtil.setContentView(this,R.layout.activity_favorites);
 
         binding.setViewModel(mViewModel);
 

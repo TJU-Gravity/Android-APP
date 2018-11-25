@@ -1,12 +1,9 @@
 package com.example.yanghan.gravity.ui.me;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -15,7 +12,6 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.yanghan.gravity.R;
 import com.example.yanghan.gravity.databinding.MeActivityBinding;
-import com.example.yanghan.gravity.ui.me.favorites.FavoritesActivity;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 
@@ -27,10 +23,10 @@ public class MeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.me_activity);
+        setContentView(R.layout.activity_me);
 
         mViewModel = ViewModelProviders.of(this).get(MeViewModel.class);
-        binding=DataBindingUtil.setContentView(this,R.layout.me_activity);
+        binding=DataBindingUtil.setContentView(this,R.layout.activity_me);
         binding.setViewModel(mViewModel);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
