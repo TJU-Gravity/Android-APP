@@ -87,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
                             }else if (drawerItem.getIdentifier() == 10) {
                                 changeFragment(new SettingFragment());
                             }
+
+
                         }
 
                         return false;
