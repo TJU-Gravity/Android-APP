@@ -14,29 +14,31 @@ https://www.cnblogs.com/hwb04160011/p/7027317.html
 
 https://github.com/wasabeef/awesome-android-ui
 
-### Material Design(已导入项目)
+### Slide Menu(已导入项目)
 
 https://github.com/mikepenz/MaterialDrawer
 
-### Menu
+ ### Text Field(已导入项目)
 
-https://uxplanet.org/16-android-menu-open-source-ui-animation-components-libraries-java-kotlin-9f3e54f64280
+https://github.com/HITGIF/TextFieldBoxes
 
+### http请求图片glide（已导入）
 
+```
+implementation 'com.github.bumptech.glide:glide:4.8.0'
+annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+```
 
-### http框架
+### Json Parse(Jackson 已导入)
 
-https://github.com/square/okhttp
+```
+compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.7'
+compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.7'
+compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.9.7'
+```
 
+### CircleImageView(Library中定义)
 
-
-### json parser
-
-https://github.com/FasterXML/jackson
-
-
-
-### 其他
-
-1. 底部导航的图标颜色有问题
-2. app图标暂未设定
+```
+com.example.library.CircleImageView
+```

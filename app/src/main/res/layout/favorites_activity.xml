@@ -7,7 +7,7 @@
 <data>
     <variable
         name="viewModel"
-        type="com.example.yanghan.gravity.ui.me.FavoritesViewModel"/>
+        type="com.example.yanghan.gravity.ui.me.favorites.FavoritesViewModel"/>
 </data>
     <FrameLayout
         android:layout_width="match_parent"

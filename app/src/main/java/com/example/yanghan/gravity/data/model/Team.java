@@ -7,14 +7,14 @@ import java.util.Date;
 
 public class Team {
 
-    public int teamID;
-    public String teamName;
-    public String captainID;
-    public int memberNum;
-    public Date createDate;
+    public int teamID=0;
+    public String teamName="";
+    public String captainID="";
+    public int memberNum=0;
+    public Date createDate=new Date();
 
-    public String headshot;
-    public String introduction;
-    public ArrayList<String> tags;
+    public String headshot="";
+    public String introduction="";
+    public ArrayList<String> tags=new ArrayList<>();
 
 }

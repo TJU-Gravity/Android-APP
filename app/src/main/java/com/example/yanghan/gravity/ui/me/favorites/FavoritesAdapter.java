@@ -1,4 +1,4 @@
-package com.example.yanghan.gravity.ui.me;
+package com.example.yanghan.gravity.ui.me.favorites;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,11 +6,8 @@ import android.view.ViewGroup;
 
 
 import com.example.yanghan.gravity.R;
-import com.example.yanghan.gravity.data.model.News;
-import com.example.yanghan.gravity.databinding.FavoritesActivityBinding;
 import com.example.yanghan.gravity.databinding.ItemFavoritesViewBinding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;

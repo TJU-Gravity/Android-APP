@@ -7,20 +7,17 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.bumptech.glide.Glide;
-import com.example.yanghan.gravity.MainActivity;
 import com.example.yanghan.gravity.R;
 import com.example.yanghan.gravity.databinding.MeActivityBinding;
+import com.example.yanghan.gravity.ui.me.favorites.FavoritesActivity;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
-import com.squareup.picasso.Picasso;
 
 public class MeActivity extends AppCompatActivity {
     private Drawer result = null;
@@ -50,23 +47,13 @@ public class MeActivity extends AppCompatActivity {
 
 
 
-        //跳转"我收藏的赛事"
-        Button favorites=findViewById(R.id.favorites);
-        favorites.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MeActivity.this, FavoritesActivity.class);
-                startActivity(intent);
-            }
-        });
-
 
         }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
+        inflater.inflate(R.menu.me_page_menu, menu);
         return true;
     }
     @Override
@@ -74,6 +61,9 @@ public class MeActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
+                return true;
+            case R.id.edit:
+                mViewModel.onClickEditBtn(this);
                 return true;
 
             default:

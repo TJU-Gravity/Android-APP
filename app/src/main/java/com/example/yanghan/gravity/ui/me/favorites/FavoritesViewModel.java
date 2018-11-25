@@ -1,23 +1,10 @@
-package com.example.yanghan.gravity.ui.me;
+package com.example.yanghan.gravity.ui.me.favorites;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
-import com.example.library.CircleImageView;
-import com.example.yanghan.gravity.data.model.News;
 
 import java.util.ArrayList;
 
-import androidx.databinding.BindingAdapter;
-import androidx.databinding.ObservableArrayList;
-import androidx.databinding.ObservableList;
 import androidx.lifecycle.ViewModel;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class FavoritesViewModel extends ViewModel  implements FavoritesAdapter.FavoritesAdapterListener
 {
@@ -35,7 +22,7 @@ public class FavoritesViewModel extends ViewModel  implements FavoritesAdapter.F
     {
         for (int i = 1; i < 10; i++) {
             FavoritesItemViewModel news = new FavoritesItemViewModel();
-            news.Title="Title";
+            news.news.title="Title";
             favoritesArrayList.add(news);
         }
 
@@ -59,9 +46,11 @@ public class FavoritesViewModel extends ViewModel  implements FavoritesAdapter.F
         Log.e("click","news");
         for (int i = 1; i < 10; i++) {
             FavoritesItemViewModel a = new FavoritesItemViewModel();
-            a.Title="Title"+Integer.toString(i);
+            a.news.title="Title"+Integer.toString(i);
             favoritesArrayList.add(a);
         }
         mAdapter.notifyDataSetChanged();
     }
+
+
 }

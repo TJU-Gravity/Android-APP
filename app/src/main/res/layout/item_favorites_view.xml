@@ -22,7 +22,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.yanghan.gravity.ui.me.FavoritesItemViewModel"/>
+            type="com.example.yanghan.gravity.ui.me.favorites.FavoritesItemViewModel"/>
     </data>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -43,27 +43,35 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingBottom="30dp">
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:scaleType="centerCrop">
 
                 <ImageView
-                    android:id="@+id/coverImageView"
+                    android:id="@+id/imageView"
                     android:layout_width="96dp"
                     android:layout_height="96dp"
-                    android:scaleType="fitCenter"
-
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:scaleType="centerCrop"
+                    app:imageUrl="@{viewModel.imageUrl}"
                     />
 
-                <TextView
+
+                <EditText
                     android:id="@+id/titleTextView"
                     style="@style/TextStyle.Heading"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="96dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="0dp"
+                    android:background="@null"
+                    android:gravity="center"
 
-                    tools:text="@{viewModel.Title}" />
-
+                    android:text="@{viewModel.news.title}"
+                    tools:text="Android MVVM Architecture" />
 
 
             </LinearLayout>

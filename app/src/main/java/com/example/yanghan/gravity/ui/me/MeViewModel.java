@@ -1,9 +1,12 @@
 package com.example.yanghan.gravity.ui.me;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -11,10 +14,10 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.library.CircleImageView;
 import com.example.yanghan.gravity.R;
 import com.example.yanghan.gravity.data.model.User;
+import com.example.yanghan.gravity.ui.me.edit.EditActivity;
+import com.example.yanghan.gravity.ui.me.favorites.FavoritesActivity;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
-import com.squareup.picasso.Picasso;
 
 import androidx.databinding.BindingAdapter;
 import androidx.lifecycle.ViewModel;
@@ -69,7 +72,20 @@ public class MeViewModel extends ViewModel {
     }
 
 
+    public void onClickEditBtn(Context context)
+    {
+        Log.e("click","editBtn");
 
+        Intent intent = new Intent(context, EditActivity.class);
+        context.startActivity(intent);
+    }
+    public void onClickFavorites(View v)
+    {
+        Log.e("click","FavoritesBtn");
+
+        Intent intent = new Intent(v.getContext(), FavoritesActivity.class);
+        v.getContext().startActivity(intent);
+    }
 
 
 }

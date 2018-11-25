@@ -1,6 +1,5 @@
-package com.example.yanghan.gravity.ui.me;
+package com.example.yanghan.gravity.ui.me.favorites;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
@@ -10,19 +9,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.ViewGroup;
 
 import com.example.yanghan.gravity.R;
-import com.example.yanghan.gravity.data.model.News;
 import com.example.yanghan.gravity.databinding.FavoritesActivityBinding;
-import com.example.yanghan.gravity.databinding.MeActivityBinding;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
-
-import java.util.ArrayList;
 
 public class FavoritesActivity extends AppCompatActivity
 {
@@ -79,12 +71,6 @@ public class FavoritesActivity extends AppCompatActivity
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
-        return true;
-    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
