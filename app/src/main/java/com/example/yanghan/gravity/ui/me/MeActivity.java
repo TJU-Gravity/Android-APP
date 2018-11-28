@@ -11,14 +11,14 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.yanghan.gravity.R;
-import com.example.yanghan.gravity.databinding.MeActivityBinding;
+import com.example.yanghan.gravity.databinding.ActivityMeBinding;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 
 public class MeActivity extends AppCompatActivity {
     private Drawer result = null;
     private MeViewModel mViewModel;
-    MeActivityBinding binding;
+    ActivityMeBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
