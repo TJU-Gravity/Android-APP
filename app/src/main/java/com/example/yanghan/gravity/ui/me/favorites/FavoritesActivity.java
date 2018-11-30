@@ -12,7 +12,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.yanghan.gravity.R;
-import com.example.yanghan.gravity.databinding.FavoritesActivityBinding;
+import com.example.yanghan.gravity.databinding.ActivityFavoritesBinding;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 
@@ -22,18 +22,18 @@ public class FavoritesActivity extends AppCompatActivity
     private FavoritesViewModel mViewModel;
     private RecyclerView mRecyclerView;
     private FavoritesAdapter mAdapter;
-    FavoritesActivityBinding binding;
+    ActivityFavoritesBinding binding;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.favorites_activity);
+        setContentView(R.layout.activity_favorites);
 
         mViewModel = ViewModelProviders.of(this).get(FavoritesViewModel.class);
 
-        binding=DataBindingUtil.setContentView(this,R.layout.favorites_activity);
+        binding=DataBindingUtil.setContentView(this,R.layout.activity_favorites);
 
         binding.setViewModel(mViewModel);
 

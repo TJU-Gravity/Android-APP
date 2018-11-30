@@ -1,6 +1,5 @@
 package com.example.yanghan.gravity.ui.team;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
@@ -16,11 +15,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
-import com.example.yanghan.gravity.MainActivity;
+
 import com.example.yanghan.gravity.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,7 +41,7 @@ public class TeamFragment extends Fragment{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.team_fragment, container, false);
+        View v = inflater.inflate(R.layout.fragment_team, container, false);
 
         //写死的数据，用于测试
         //插入队伍头像图片
@@ -68,7 +65,7 @@ public class TeamFragment extends Fragment{
 
         SimpleAdapter adapter = new SimpleAdapter(getActivity()
                 , listitem
-                , R.layout.group_items
+                , R.layout.items_group
                 , new String[]{"group_logo","group_name"}
                 , new int[]{R.id.group_logo, R.id.group_name});
         // 第一个参数是上下文对象
