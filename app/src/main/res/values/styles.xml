@@ -7,7 +7,7 @@
         <item name="colorPrimaryDark">#25414e</item>
         <item name="colorAccent">#25414e</item>
 
-
+        <item name="android:textAppearance">@style/TextAppearance.Text.Regular</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
@@ -19,9 +19,13 @@
         <item name="colorAccent">#9C3521</item>
     </style>
 
+    <style name="TextAppearence.App.TextInputLayout" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/gray</item>
+    </style>
 
-
-
+    <style name="TextAppearance.Text.Regular" parent="android:TextAppearance">
+        <item name="fontPath">fonts/source-sans-pro/SourceSansPro-Regular.ttf</item>
+    </style>
 
     <style name="TextStyle">
         <item name="android:layout_marginTop">2dp</item>
