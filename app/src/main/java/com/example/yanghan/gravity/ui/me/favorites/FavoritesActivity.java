@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.yanghan.gravity.R;
+import com.example.yanghan.gravity.data.other.LoginManager;
 import com.example.yanghan.gravity.databinding.ActivityFavoritesBinding;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
@@ -53,6 +54,7 @@ public class FavoritesActivity extends AppCompatActivity
         getSupportActionBar().setHomeButtonEnabled(false);
 
         initRecyclerView();
+
 
 
     }
