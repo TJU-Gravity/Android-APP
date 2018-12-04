@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.team.GroupCreateActivity">
-
+    tools:context=".ui.me.edit.EditActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,7 +12,7 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/group_toolbar"
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
@@ -30,55 +29,31 @@
             android:orientation="vertical"
             android:paddingTop="40dp">
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
+
                 android:orientation="vertical">
 
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/name_edit_box"
+                    android:id="@+id/nickname_box"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="20dp"
 
                     android:layout_marginEnd="20dp"
-                    app:labelText="团队名称"
-                    app:maxCharacters="10">
-
-                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/edit_note"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-
-                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:orientation="vertical">
-
-                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/match_edit_box"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="20dp"
-
-                    android:layout_marginEnd="20dp"
-                    app:labelText="关联赛事"
+                    app:labelText="昵称"
                     app:maxCharacters="25">
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/match_edit_note"
+                        android:id="@+id/nickname"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-
             </LinearLayout>
 
             <LinearLayout
@@ -87,70 +62,53 @@
                 android:orientation="vertical">
 
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/profile_box"
+                    android:id="@+id/email_box"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="20dp"
 
                     android:layout_marginEnd="20dp"
-                    app:labelText="团队简介"
-                    app:maxCharacters="50">
+                    app:labelText="邮箱">
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/profile_note"
+                        android:id="@+id/email"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        app:suffix="\@gmail.com" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:orientation="horizontal">
-
-                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/member_box"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="20dp"
-
-                    android:layout_marginEnd="20dp"
-                    app:labelText="添加初始成员"
-                    app:maxCharacters="50">
-
-                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/member_note"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-
-                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="bottom|center_horizontal"
+                android:layout_height="100dp"
                 android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/button"
-                    android:layout_width="120dp"
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/password_box"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/buttonboder"
-                    android:text="确认"
-                    android:textColor="@color/md_brown_500"
-                    android:textSize="20sp" />
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+
+                    android:layout_marginEnd="20dp"
+                    app:helperText="最多25个字符"
+                    app:labelText="密码"
+                    app:maxCharacters="25">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword" />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
             </LinearLayout>
 
         </LinearLayout>
+
     </LinearLayout>
 
 
