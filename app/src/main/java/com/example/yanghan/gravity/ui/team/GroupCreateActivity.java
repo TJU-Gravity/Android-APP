@@ -68,10 +68,10 @@ public class GroupCreateActivity extends AppCompatActivity {
 
     private void init(){
 
-        name=(EditText)findViewById(R.id.nameEdit);
-        match=(EditText)findViewById(R.id.matchEdit);
-        member=(EditText)findViewById(R.id.memberEdit);
-        profile=(EditText)findViewById(R.id.profileEdit);
+//        name=(EditText)findViewById(R.id.nameEdit);
+//        match=(EditText)findViewById(R.id.matchEdit);
+//        member=(EditText)findViewById(R.id.memberEdit);
+//        profile=(EditText)findViewById(R.id.profileEdit);
         button=(Button)findViewById(R.id.button);
         if(ChangeorCreate){
             name.setText(GroupMessageActivity.groupname);
