@@ -26,28 +26,28 @@ public class GroupMessageActivity extends AppCompatActivity {
     public static String groupname="火箭队";
     public static String associatedevent="NBA联赛";
     public static String teamprofile="     "+"这是一支十分强大的篮球队伍，深受人们喜爱，曾经创造了非常多的辉煌";
-    private Drawer result = null;
+   private Drawer result = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_message);
 
-        Toolbar group_toolbar = (Toolbar) findViewById(R.id.group_toolbar);
-        // Sets the Toolbar to act as the ActionBar for this Activity window.
-        // Make sure the toolbar exists in the activity and is not null
-        setSupportActionBar(group_toolbar);
-        result = new DrawerBuilder()
-                .withActivity(this)
-                .withSavedInstance(savedInstanceState)
-                .withFullscreen(true)
-                .build();
-
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(false);
-
-
+//        Toolbar group_toolbar = (Toolbar) findViewById(R.id.group_toolbar);
+//        // Sets the Toolbar to act as the ActionBar for this Activity window.
+//        // Make sure the toolbar exists in the activity and is not null
+//        setSupportActionBar(group_toolbar);
+//        result = new DrawerBuilder()
+//                .withActivity(this)
+//                .withSavedInstance(savedInstanceState)
+//                .withFullscreen(true)
+//                .build();
+//
+//
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setHomeButtonEnabled(false);
+//
+//
 
         init();
 
@@ -57,15 +57,15 @@ public class GroupMessageActivity extends AppCompatActivity {
     }
 
  private void init(){
-     group_name_message=(TextView)findViewById(R.id.GroupNameMessage);
-     associated_event_message=(TextView)findViewById(R.id.AssociatedEventMessage);
-     team_profile_message=(TextView)findViewById(R.id.TeamProfileMessage);
-//     groupname="火箭队";
-//     associatedevent="NBA联赛";
-//     teamprofile="     "+"这是一支十分强大的篮球队伍，深受人们喜爱，曾经创造了非常多的辉煌";
-     group_name_message.setText(groupname);
-     associated_event_message.setText(associatedevent);
-     team_profile_message.setText(teamprofile);
+//     group_name_message=(TextView)findViewById(R.id.GroupNameMessage);
+//     associated_event_message=(TextView)findViewById(R.id.AssociatedEventMessage);
+//     team_profile_message=(TextView)findViewById(R.id.TeamProfileMessage);
+     groupname="火箭队";
+     associatedevent="NBA联赛";
+     teamprofile="     "+"这是一支十分强大的篮球队伍，深受人们喜爱，曾经创造了非常多的辉煌";
+//     group_name_message.setText(groupname);
+//     associated_event_message.setText(associatedevent);
+//     team_profile_message.setText(teamprofile);
  }
 
 
