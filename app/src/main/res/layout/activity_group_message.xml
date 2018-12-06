@@ -62,7 +62,8 @@
                     android:layout_height="?attr/actionBarSize"
                     app:layout_collapseMode="pin"
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                    app:title="团队信息">
+                    app:title="团队信息"
+                    >
 
 
                 </androidx.appcompat.widget.Toolbar>
@@ -86,26 +87,30 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     >
+
                     <TextView
+                        android:id="@+id/GroupNameMessage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="16dp"
-                        android:text="火箭队"
-                        android:textSize="24sp"/>
+                        android:textColor="@color/A400red"
+                        android:textSize="24sp" />
 
 
                     <TextView
+                        android:id="@+id/AssociatedEventMessage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="16dp"
-                        android:text="关联赛事：NBA联赛"
-                        android:textSize="20sp"/>
+                        android:textColor="@color/design_default_color_primary"
+                        android:textSize="20sp" />
                 </LinearLayout>
                 <TextView
+                    android:id="@+id/TeamProfileMessage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
-                    android:text="简介：这是一支十分强大的篮球队伍，深受人们喜爱，曾经创造了非常多的辉煌"/>
+                   />
                 <View
                     android:layout_height="2dp"
                     android:layout_width="match_parent"
@@ -119,39 +124,63 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                    <com.example.library.CircleImageView
-                        android:id="@+id/imageView"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:src="@drawable/headshot"
+                    <LinearLayout
+                        android:layout_width="80dp"
+                        android:layout_height="65dp"
+                        android:orientation="horizontal">
 
-                        android:gravity="center" />
+                        <com.example.library.CircleImageView
+                            android:id="@+id/imageView"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:gravity="center"
 
-                    <com.example.library.CircleImageView
-                        android:id="@+id/imageView1"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:src="@drawable/headshot"
+                            android:src="@drawable/headshot" />
+                    </LinearLayout>
 
-                        android:gravity="center" />
+                    <LinearLayout
+                        android:layout_width="80dp"
+                        android:layout_height="65dp"
+                        android:orientation="horizontal">
 
-                    <com.example.library.CircleImageView
-                        android:id="@+id/imageView2"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:src="@drawable/headshot"
+                        <com.example.library.CircleImageView
+                            android:id="@+id/imageView1"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:gravity="center"
 
-                        android:gravity="center" />
+                            android:src="@drawable/headshot" />
+                    </LinearLayout>
 
-                    <com.example.library.CircleImageView
-                        android:id="@+id/imageView3"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:src="@android:drawable/ic_input_add"
-                        app:civ_border_width="2dp"
-                        app:civ_border_color="#6200EA"
-                        android:gravity="center" />
 
+                    <LinearLayout
+                        android:layout_width="80dp"
+                        android:layout_height="65dp"
+                        android:orientation="horizontal">
+
+                        <com.example.library.CircleImageView
+                            android:id="@+id/imageView2"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:gravity="center"
+
+                            android:src="@drawable/headshot" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="80dp"
+                        android:layout_height="65dp"
+                        android:orientation="horizontal">
+
+                        <com.example.library.CircleImageView
+                            android:id="@+id/imageView3"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:foreground="@android:drawable/ic_input_add"
+                            android:gravity="center"
+                            android:src="@drawable/boder" />
+                    </LinearLayout>
 
                 </LinearLayout>
 
