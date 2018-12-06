@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.yanghan.gravity.MainActivity;
 import com.example.yanghan.gravity.R;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
@@ -25,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.AndroidViewModel;
 
 public class GroupMessageActivity extends AppCompatActivity {
     private TextView group_name_message;
@@ -67,15 +69,17 @@ public class GroupMessageActivity extends AppCompatActivity {
                 R.drawable.header, R.drawable.header1, R.drawable.headshot
                };
         //图片编号
-
         //初始化数据
         List<Map<String, Object>> data = new ArrayList<>();
-        for (int i = 0; i < images.length; i++) {
+        for (int i = 0; i < images.length&&i<9; i++) {
             Map<String, Object> map = new HashMap<>();
             map.put("ItemImage", images[i]);
             //如果只需要显示图片，可以不用这一行，需要同时将from和to中的相关内容删去
             data.add(map);
         }
+        Map<String, Object> map = new HashMap<>();
+        map.put("ItemImage",R.drawable.headshot);
+        data.add(map);
         String[] from = {"ItemImage"};
         int[] to = {R.id.imageView};
 
@@ -134,10 +138,8 @@ public class GroupMessageActivity extends AppCompatActivity {
     }
 
  private void SwitchToChangePage(){
-     GroupCreateActivity.ChangeorCreate=true;
-     Intent intent=new Intent(GroupMessageActivity.this,GroupCreateActivity.class);
+     Intent intent=new Intent(GroupMessageActivity.this,GroupMessageChangeActivity.class);
      startActivity(intent);
-     //this.finish();
  }
 
  private void FillTheBlank(){

@@ -29,7 +29,6 @@ public class GroupCreateActivity extends AppCompatActivity {
     private EditText member;
     private EditText profile;
     private Button button;
-    public static boolean ChangeorCreate;
     private Drawer result = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,12 +71,11 @@ public class GroupCreateActivity extends AppCompatActivity {
 //        match=(EditText)findViewById(R.id.matchEdit);
 //        member=(EditText)findViewById(R.id.memberEdit);
 //        profile=(EditText)findViewById(R.id.profileEdit);
-        button=(Button)findViewById(R.id.button);
-        if(ChangeorCreate){
+            button=(Button)findViewById(R.id.button);
             name.setText(GroupMessageActivity.groupname);
             match.setText(GroupMessageActivity.associatedevent);
             profile.setText(GroupMessageActivity.teamprofile);
-        }
+
     }
     private void SavetoDB(){
         //TODO 储存到数据库

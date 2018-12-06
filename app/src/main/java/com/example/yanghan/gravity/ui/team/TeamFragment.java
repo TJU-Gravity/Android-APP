@@ -93,7 +93,6 @@ public class TeamFragment extends Fragment{
             @Override
             public void onClick(View view) {
                 //TODO CREATE A NEW TEAM
-                GroupCreateActivity.ChangeorCreate=false;
                 Intent intent=new Intent(getActivity(),GroupCreateActivity.class);
                 startActivity(intent);
 

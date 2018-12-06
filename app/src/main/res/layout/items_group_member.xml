@@ -6,13 +6,17 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 
+    <LinearLayout
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:orientation="horizontal">
 
-    <com.example.library.CircleImageView
-    android:id="@+id/imageView"
-    android:layout_width="60dp"
-    android:layout_height="60dp"
-    android:gravity="center"
-     />
+        <com.example.library.CircleImageView
+            android:id="@+id/imageView"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:gravity="center" />
+    </LinearLayout>
 
 
 </LinearLayout>
