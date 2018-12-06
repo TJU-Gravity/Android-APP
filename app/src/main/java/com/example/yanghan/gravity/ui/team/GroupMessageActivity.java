@@ -6,6 +6,8 @@ import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.GridView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +18,11 @@ import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 
 import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -53,6 +60,32 @@ public class GroupMessageActivity extends AppCompatActivity {
 
 
         //TODO something
+        GridView gridView = (GridView) findViewById(R.id.team_member);
+
+        //图片数据
+        int[] images = {R.drawable.header, R.drawable.header1, R.drawable.headshot,
+                R.drawable.header, R.drawable.header1, R.drawable.headshot
+               };
+        //图片编号
+
+        //初始化数据
+        List<Map<String, Object>> data = new ArrayList<>();
+        for (int i = 0; i < images.length; i++) {
+            Map<String, Object> map = new HashMap<>();
+            map.put("ItemImage", images[i]);
+            //如果只需要显示图片，可以不用这一行，需要同时将from和to中的相关内容删去
+            data.add(map);
+        }
+        String[] from = {"ItemImage"};
+        int[] to = {R.id.imageView};
+
+        //实例化一个适配器
+        SimpleAdapter adapter = new SimpleAdapter(this, data, R.layout.items_group_member,from,to);
+        //为GridView设置适配器
+        gridView.setAdapter(adapter);
+
+
+
 
     }
 
