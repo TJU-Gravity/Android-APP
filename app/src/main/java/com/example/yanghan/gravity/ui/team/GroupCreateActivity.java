@@ -2,10 +2,12 @@ package com.example.yanghan.gravity.ui.team;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import studio.carbonylgroup.textfieldboxes.ExtendedEditText;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.print.PrinterId;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -24,10 +26,10 @@ public class GroupCreateActivity extends AppCompatActivity {
     private String TeamMatch;
     private String TeamMember;
     private String TeamProfile;
-    private EditText name;
-    private EditText match;
-    private EditText member;
-    private EditText profile;
+    private ExtendedEditText name;
+    private ExtendedEditText match;
+    private ExtendedEditText profile;
+    private ExtendedEditText member;
     private Button button;
     private Drawer result = null;
     @Override
@@ -47,45 +49,42 @@ public class GroupCreateActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(false);
         init();
         button.setOnClickListener(new View.OnClickListener(){
-             @Override
+            @Override
             public void onClick(View v) {
-               //这里只进行了非空的判断
-                 if(name.getText().toString().trim().isEmpty()||match.getText().toString().trim().isEmpty()||member.getText().toString().trim().isEmpty()||profile.getText().toString().trim().isEmpty()){
-                     Toast.makeText(GroupCreateActivity.this, "信息不能为空！", Toast.LENGTH_SHORT).show();
 
-                 }
-                 else{
-                     ChangeMessage();
-                     SavetoDB();
-                     Intent intent=new Intent(GroupCreateActivity.this,GroupMessageActivity.class);
-                     startActivity(intent);
-                     // GroupCreateActivity.this.finish();
-                 }
-             }
+                //这里只进行了非空的判断
+                if(name.getText().toString().trim().isEmpty()||match.getText().toString().trim().isEmpty()||profile.getText().toString().trim().isEmpty()||member.getText().toString().trim().isEmpty()){
+                    Toast.makeText(GroupCreateActivity.this, "信息不能为空！", Toast.LENGTH_SHORT).show();
+
+                }
+                else{
+                    GroupMessageActivity.groupname=name.getText().toString();
+                    GroupMessageActivity.associatedevent=match.getText().toString();
+                    GroupMessageActivity.teamprofile=profile.getText().toString();
+                    Intent intent=new Intent(GroupCreateActivity.this,GroupMessageActivity.class);
+                    startActivity(intent);
+
+                }
+            }
         });
     }
 
     private void init(){
 
-//        name=(EditText)findViewById(R.id.nameEdit);
-//        match=(EditText)findViewById(R.id.matchEdit);
-//        member=(EditText)findViewById(R.id.memberEdit);
-//        profile=(EditText)findViewById(R.id.profileEdit);
-            button=(Button)findViewById(R.id.button);
-            name.setText(GroupMessageActivity.groupname);
-            match.setText(GroupMessageActivity.associatedevent);
-            profile.setText(GroupMessageActivity.teamprofile);
+
+        name=(ExtendedEditText )findViewById(R.id.edit_note);
+        match=(ExtendedEditText)findViewById(R.id.match_edit_note);
+        profile=(ExtendedEditText)findViewById(R.id.profile_note);
+        member=(ExtendedEditText)findViewById(R.id.member_note);
+        button=(Button)findViewById(R.id.button);
+
 
     }
     private void SavetoDB(){
         //TODO 储存到数据库
     }
 
-    private void ChangeMessage(){
-        GroupMessageActivity.groupname=name.getText().toString();
-        GroupMessageActivity.associatedevent=match.getText().toString();
-        GroupMessageActivity.teamprofile=profile.getText().toString();
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

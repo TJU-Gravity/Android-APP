@@ -86,7 +86,7 @@
                 android:orientation="vertical">
 
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/profile_box"
+                    android:id="@+id/profile_edit_box"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

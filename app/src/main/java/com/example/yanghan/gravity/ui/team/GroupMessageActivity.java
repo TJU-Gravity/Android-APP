@@ -69,19 +69,22 @@ public class GroupMessageActivity extends AppCompatActivity {
                 R.drawable.header, R.drawable.header1, R.drawable.headshot
                };
         //图片编号
+        String[] username={"peter","kate","lucky","honey","boss","mimi"};
         //初始化数据
         List<Map<String, Object>> data = new ArrayList<>();
         for (int i = 0; i < images.length&&i<9; i++) {
             Map<String, Object> map = new HashMap<>();
             map.put("ItemImage", images[i]);
+            map.put("ItemName", username[i]);
             //如果只需要显示图片，可以不用这一行，需要同时将from和to中的相关内容删去
             data.add(map);
         }
         Map<String, Object> map = new HashMap<>();
-        map.put("ItemImage",R.drawable.headshot);
+        map.put("ItemImage",R.drawable.images);
         data.add(map);
-        String[] from = {"ItemImage"};
-        int[] to = {R.id.imageView};
+        String[] from = {"ItemImage","ItemName"};
+        map.put("ItemName", null);
+        int[] to = {R.id.imageView,R.id.textView};
 
         //实例化一个适配器
         SimpleAdapter adapter = new SimpleAdapter(this, data, R.layout.items_group_member,from,to);
@@ -97,9 +100,6 @@ public class GroupMessageActivity extends AppCompatActivity {
      group_name_message=(TextView)findViewById(R.id.GroupNameMessage);
      associated_event_message=(TextView)findViewById(R.id.AssociatedEventMessage);
      team_profile_message=(TextView)findViewById(R.id.TeamProfileMessage);
-     groupname="火箭队";
-     associatedevent="NBA联赛";
-     teamprofile="     "+"这是一支十分强大的篮球队伍，深受人们喜爱，曾经创造了非常多的辉煌";
      group_name_message.setText(groupname);
      associated_event_message.setText(associatedevent);
      team_profile_message.setText(teamprofile);
