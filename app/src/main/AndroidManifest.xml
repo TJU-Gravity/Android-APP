@@ -23,13 +23,16 @@
             android:name=".ui.me.MeActivity"
             android:theme="@style/Base.Theme.DesignDemo" />
         <activity android:name=".ui.me.favorites.FavoritesActivity" />
-        <activity android:name=".ui.me.edit.EditActivity"></activity>
-
-       <activity
+        <activity android:name=".ui.me.edit.EditActivity" />
+        <activity
             android:name=".ui.team.GroupMessageActivity"
             android:label="@string/title_activity_group_message" />
-        <activity android:name=".ui.team.GroupCreateActivity"></activity>
+
         <activity android:name=".ui.news.NewsDetailActivity"></activity>
+
+        <activity android:name=".ui.team.GroupCreateActivity" />
+        <activity android:name=".ui.login.LoginActivity"></activity>
+
     </application>
 
 </manifest>

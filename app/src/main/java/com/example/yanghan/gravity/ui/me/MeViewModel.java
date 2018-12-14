@@ -12,13 +12,17 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.library.CircleImageView;
+import com.example.yanghan.gravity.BR;
 import com.example.yanghan.gravity.R;
 import com.example.yanghan.gravity.data.model.User;
+import com.example.yanghan.gravity.data.other.LoginManager;
 import com.example.yanghan.gravity.ui.me.edit.EditActivity;
 import com.example.yanghan.gravity.ui.me.favorites.FavoritesActivity;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
+
+import androidx.databinding.BaseObservable;
 import androidx.databinding.BindingAdapter;
 import androidx.lifecycle.ViewModel;
 
@@ -26,9 +30,7 @@ import androidx.lifecycle.ViewModel;
 public class MeViewModel extends ViewModel {
     // TODO: Implement the ViewModel
     public User user;
-    public Image headshot;
-
-
+    private LoginManager loginManager=new LoginManager();
     public MeViewModel()
     {
         super();
@@ -52,10 +54,21 @@ public class MeViewModel extends ViewModel {
         //user=objectMapper.readValue(new File("/Users/yanghan/Documents/Gravity/app/sampledata"),User.class);
 
 
+    }
+
+    public void initUser(Context context)
+    {
+        Log.e("init","user");
+
+        user.loadUser(context);//http请求后废弃
+
+        //user=loginManager.getCurrentUser(this);
+
 
     }
     public String getImageUrl() {
-        // The URL will usually come from a model (i.e Profile)
+
+        // return user.headshot;
         return "https://upload.wikimedia.org/wikipedia/commons/f/fe/Michelle_Borromeo_Actor_Headshots_30.jpg";
     }
 
@@ -67,10 +80,7 @@ public class MeViewModel extends ViewModel {
                 .load(imageUrl)
                 .apply(new RequestOptions().override(96, 96).error(new ColorDrawable(Color.GRAY)))
                 .into(view);
-
-
     }
-
 
     public void onClickEditBtn(Context context)
     {
@@ -86,6 +96,11 @@ public class MeViewModel extends ViewModel {
         Intent intent = new Intent(v.getContext(), FavoritesActivity.class);
         v.getContext().startActivity(intent);
     }
+    public void onClickLogout(Context context)
+    {
+        Log.e("click","logout");
+        loginManager.logout(context,user);
 
+    }
 
 }

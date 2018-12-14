@@ -60,7 +60,7 @@
                     />
 
 
-                <EditText
+                <TextView
                     android:id="@+id/titleTextView"
                     style="@style/TextStyle.Heading"
                     android:layout_width="match_parent"
@@ -69,9 +69,9 @@
                     android:layout_marginEnd="0dp"
                     android:background="@null"
                     android:gravity="center"
-
+                    android:textSize="20dp"
                     android:text="@{viewModel.news.title}"
-                    tools:text="Android MVVM Architecture" />
+                    tools:text="大学生数学建模竞赛" />
 
 
             </LinearLayout>

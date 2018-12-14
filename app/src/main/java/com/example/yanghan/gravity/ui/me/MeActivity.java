@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.yanghan.gravity.R;
+import com.example.yanghan.gravity.data.other.LoginManager;
 import com.example.yanghan.gravity.databinding.ActivityMeBinding;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
@@ -19,13 +20,15 @@ public class MeActivity extends AppCompatActivity {
     private Drawer result = null;
     private MeViewModel mViewModel;
     ActivityMeBinding binding;
+    private  LoginManager loginManager=new LoginManager();
+    boolean tryToLogin=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_me);
 
-        mViewModel = ViewModelProviders.of(this).get(MeViewModel.class);
+        mViewModel = new MeViewModel();
         binding=DataBindingUtil.setContentView(this,R.layout.activity_me);
         binding.setViewModel(mViewModel);
 
@@ -41,10 +44,13 @@ public class MeActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(false);
 
-
-
-
         }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+      getUser();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -61,7 +67,9 @@ public class MeActivity extends AppCompatActivity {
             case R.id.edit:
                 mViewModel.onClickEditBtn(this);
                 return true;
-
+            case R.id.logout:
+                tryToLogin=false;
+                mViewModel.onClickLogout(this);
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -78,6 +86,29 @@ public class MeActivity extends AppCompatActivity {
     }
 
 
+    private void getUser()
+    {
+
+        if(!loginManager.isLogin(this)) {
+            if (tryToLogin)
+            {
+                loginManager.loginPage(this);
+                tryToLogin=false;
+            }
+            else
+            {
+                tryToLogin=true;
+                onBackPressed();
+            }
+        }
+        else
+        {
+            mViewModel.initUser(this);
+            binding.invalidateAll();
+        }
+
+
+    }
     public MeViewModel getViewModel() {
         return mViewModel;
     }

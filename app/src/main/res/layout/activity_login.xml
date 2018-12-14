@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.yanghan.gravity.ui.login.LoginViewModel"/>
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.login.LoginActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <RelativeLayout
+
+        android:id="@+id/activityMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/header_test">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="80dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="80dp"
+        app:cardCornerRadius="7dp"
+        app:cardElevation="22dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextStyle.Heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_marginTop="30dp"
+                android:text="login"
+                android:textAllCaps="true"
+                android:textSize="20sp" />
+
+            <FrameLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="90dp">
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/username_box"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    app:labelText="用户名"
+                    app:maxCharacters="25"
+                    app:panelBackgroundColor="#FFFFFF">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/nickname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                       />
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp">
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/password_box"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    app:panelBackgroundColor="#FFFFFF"
+                    android:layout_marginEnd="20dp"
+                    app:labelText="密码"
+                    app:maxCharacters="25">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                       />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp">
+            <Button
+                android:id="@+id/login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@color/accent"
+                android:textColor="#FFFFFF"
+                android:text="LOGIN"
+                android:onClick="@{(v)->viewModel.login(v)}"/>
+            </FrameLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

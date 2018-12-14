@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class News {
+
     public int newsID=0;
     public  String title="";
     public String newsbody="";
