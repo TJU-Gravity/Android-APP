@@ -6,10 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".ui.me.edit.EditActivity">
 
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:scrollbars="vertical"
+        >
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -105,11 +114,60 @@
                         android:inputType="textPassword" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/introduction_box"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    app:labelText="自我介绍"
+                    app:maxCharacters="250"
+                    app:hasClearButton="true"
+                    >
+
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/introduction"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:inputType="textMultiLine"
+
+                        />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            </LinearLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp">
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="提交"
+                    android:gravity="center"
+                    android:textColor="#FFFFFF"
+                    android:background="@color/accent"/>
+            </FrameLayout>
 
         </LinearLayout>
 
     </LinearLayout>
 
-
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

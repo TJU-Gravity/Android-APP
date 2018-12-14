@@ -22,7 +22,7 @@ public class FavoritesViewModel extends ViewModel  implements FavoritesAdapter.F
     {
         for (int i = 1; i < 10; i++) {
             FavoritesItemViewModel news = new FavoritesItemViewModel();
-            news.news.title="Title";
+            news.news.title="大学生数学建模竞赛"+Integer.toString(i);
             favoritesArrayList.add(news);
         }
 
@@ -46,7 +46,7 @@ public class FavoritesViewModel extends ViewModel  implements FavoritesAdapter.F
         Log.e("click","news");
         for (int i = 1; i < 10; i++) {
             FavoritesItemViewModel a = new FavoritesItemViewModel();
-            a.news.title="Title"+Integer.toString(i);
+            a.news.title="contestNews"+Integer.toString(i);
             favoritesArrayList.add(a);
         }
         mAdapter.notifyDataSetChanged();
