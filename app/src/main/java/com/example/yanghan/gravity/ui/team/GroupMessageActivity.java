@@ -6,18 +6,27 @@ import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.GridView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.yanghan.gravity.MainActivity;
 import com.example.yanghan.gravity.R;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.AndroidViewModel;
 
 public class GroupMessageActivity extends AppCompatActivity {
     private TextView group_name_message;
@@ -25,15 +34,15 @@ public class GroupMessageActivity extends AppCompatActivity {
     private TextView team_profile_message;
     public static String groupname="火箭队";
     public static String associatedevent="NBA联赛";
-    public static String teamprofile="     "+"这是一支十分强大的篮球队伍，深受人们喜爱，曾经创造了非常多的辉煌";
-    private Drawer result = null;
+    public static String teamprofile="简介： "+"这是一支十分强大的篮球队伍，深受人们喜爱，曾经创造了非常多的辉煌";
+   private Drawer result = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_message);
 
-        Toolbar group_toolbar = (Toolbar) findViewById(R.id.group_toolbar);
+        Toolbar group_toolbar = (Toolbar) findViewById(R.id.toolbar_team);
         // Sets the Toolbar to act as the ActionBar for this Activity window.
         // Make sure the toolbar exists in the activity and is not null
         setSupportActionBar(group_toolbar);
@@ -53,6 +62,37 @@ public class GroupMessageActivity extends AppCompatActivity {
 
 
         //TODO something
+        GridView gridView = (GridView) findViewById(R.id.team_member);
+
+        //图片数据
+        int[] images = {R.drawable.header, R.drawable.header1, R.drawable.headshot,
+                R.drawable.header, R.drawable.header1, R.drawable.headshot
+               };
+        //图片编号
+        String[] username={"peter","kate","lucky","honey","boss","mimi"};
+        //初始化数据
+        List<Map<String, Object>> data = new ArrayList<>();
+        for (int i = 0; i < images.length&&i<9; i++) {
+            Map<String, Object> map = new HashMap<>();
+            map.put("ItemImage", images[i]);
+            map.put("ItemName", username[i]);
+            //如果只需要显示图片，可以不用这一行，需要同时将from和to中的相关内容删去
+            data.add(map);
+        }
+        Map<String, Object> map = new HashMap<>();
+        map.put("ItemImage",R.drawable.images);
+        data.add(map);
+        String[] from = {"ItemImage","ItemName"};
+        map.put("ItemName", null);
+        int[] to = {R.id.imageView,R.id.textView};
+
+        //实例化一个适配器
+        SimpleAdapter adapter = new SimpleAdapter(this, data, R.layout.items_group_member,from,to);
+        //为GridView设置适配器
+        gridView.setAdapter(adapter);
+
+
+
 
     }
 
@@ -60,9 +100,6 @@ public class GroupMessageActivity extends AppCompatActivity {
      group_name_message=(TextView)findViewById(R.id.GroupNameMessage);
      associated_event_message=(TextView)findViewById(R.id.AssociatedEventMessage);
      team_profile_message=(TextView)findViewById(R.id.TeamProfileMessage);
-//     groupname="火箭队";
-//     associatedevent="NBA联赛";
-//     teamprofile="     "+"这是一支十分强大的篮球队伍，深受人们喜爱，曾经创造了非常多的辉煌";
      group_name_message.setText(groupname);
      associated_event_message.setText(associatedevent);
      team_profile_message.setText(teamprofile);
@@ -101,10 +138,8 @@ public class GroupMessageActivity extends AppCompatActivity {
     }
 
  private void SwitchToChangePage(){
-     GroupCreateActivity.ChangeorCreate=true;
-     Intent intent=new Intent(GroupMessageActivity.this,GroupCreateActivity.class);
+     Intent intent=new Intent(GroupMessageActivity.this,GroupMessageChangeActivity.class);
      startActivity(intent);
-     //this.finish();
  }
 
  private void FillTheBlank(){
