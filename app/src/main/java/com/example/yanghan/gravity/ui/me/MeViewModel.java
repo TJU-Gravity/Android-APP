@@ -62,14 +62,13 @@ public class MeViewModel extends ViewModel {
 
         user.loadUser(context);//http请求后废弃
 
-        //user=loginManager.getCurrentUser(this);
 
 
     }
     public String getImageUrl() {
 
-        // return user.headshot;
-        return "https://upload.wikimedia.org/wikipedia/commons/f/fe/Michelle_Borromeo_Actor_Headshots_30.jpg";
+        return user.headshot;
+
     }
 
     @BindingAdapter({"bind:imageUrl"})
