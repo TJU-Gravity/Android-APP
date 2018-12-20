@@ -35,24 +35,6 @@ public class MeViewModel extends ViewModel {
     {
         super();
 
-        try {
-            ObjectMapper objectMapper=new ObjectMapper();
-
-            String testJson =
-                    "{ \"username\" : \"Rebecca\" }";
-
-            user=objectMapper.readValue(testJson,User.class);
-
-
-        }
-        catch (Exception e)
-        {
-            Log.e("json","EXM?");
-        }
-
-        Log.e("init","Me");
-        //user=objectMapper.readValue(new File("/Users/yanghan/Documents/Gravity/app/sampledata"),User.class);
-
 
     }
 
