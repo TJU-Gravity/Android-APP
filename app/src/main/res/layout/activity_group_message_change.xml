@@ -67,13 +67,15 @@
                     android:layout_marginStart="20dp"
 
                     android:layout_marginEnd="20dp"
-                    app:labelText="关联赛事"
-                    app:maxCharacters="25">
+                    android:clickable="true"
+                    app:labelText="关联赛事">
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/match_edit_note"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:editable="false" />
 
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
