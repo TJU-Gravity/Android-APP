@@ -1,5 +1,6 @@
 package com.example.yanghan.gravity.ui.me.favorites;
 
+import android.content.Context;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -11,11 +12,13 @@ public class FavoritesViewModel extends ViewModel  implements FavoritesAdapter.F
 
     public final ArrayList<FavoritesItemViewModel> favoritesArrayList = new ArrayList<>();
     private FavoritesAdapter mAdapter;
-    public FavoritesViewModel()
+    private FavoritesActivity favoritesActivity;
+    public FavoritesViewModel(FavoritesActivity f)
     {
         super();
         initNews();
         Log.e("init","Favorites");
+        favoritesActivity=f;
 
     }
     private void initNews()
@@ -41,15 +44,22 @@ public class FavoritesViewModel extends ViewModel  implements FavoritesAdapter.F
     }
 
 
-    @Override
-    public void onNewsClicked(FavoritesItemViewModel news) {
-        Log.e("click","news");
+    public void loadMore()
+    {
+        Log.e("loading","news");
+
         for (int i = 1; i < 10; i++) {
             FavoritesItemViewModel a = new FavoritesItemViewModel();
             a.news.title="contestNews"+Integer.toString(i);
             favoritesArrayList.add(a);
         }
         mAdapter.notifyDataSetChanged();
+        favoritesActivity.setPullLoadMoreCompleted();
+    }
+    @Override
+    public void onNewsClicked(FavoritesItemViewModel news) {
+        Log.e("click","news");
+
     }
 
 

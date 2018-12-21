@@ -29,7 +29,7 @@ import androidx.lifecycle.ViewModel;
 
 public class MeViewModel extends ViewModel {
     // TODO: Implement the ViewModel
-    public User user;
+    public User user=new User();
     private LoginManager loginManager=new LoginManager();
     public MeViewModel()
     {
@@ -42,7 +42,7 @@ public class MeViewModel extends ViewModel {
     {
         Log.e("init","user");
 
-        user.loadUser(context);//http请求后废弃
+        if(user.loadUser(context));//http请求后废弃
 
 
 
