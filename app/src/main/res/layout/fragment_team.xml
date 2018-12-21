@@ -6,12 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".ui.team.TeamFragment">
 
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    android:id="@+id/swipe_refresh_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
     <ListView
         android:id="@+id/team_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
     </ListView>
+
+    <!--<com.example.myfirst.pulltorefreshlist.LoadMoreListView-->
+        <!--android:id="@+id/google_and_loadmore_refresh_listview"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+    <!--</com.example.myfirst.pulltorefreshlist.LoadMoreListView>-->
+
+
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

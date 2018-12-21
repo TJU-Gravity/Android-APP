@@ -20,7 +20,7 @@ android {
         enabled = true
     }
 
-    //第一步
+//第一步
     allprojects {
         repositories {
             jcenter()
