@@ -6,17 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ui.team.TeamFragment">
 
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-    android:id="@+id/swipe_refresh_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <ListView
-        android:id="@+id/team_group"
+
+    <com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView
+        android:id="@+id/pullLoadMoreRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </ListView>
+        android:layout_height="match_parent" />
 
     <!--<com.example.myfirst.pulltorefreshlist.LoadMoreListView-->
         <!--android:id="@+id/google_and_loadmore_refresh_listview"-->
@@ -27,7 +22,7 @@
 
 
 
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
 
 
