@@ -19,7 +19,7 @@ import com.example.yanghan.gravity.ui.news.NewsFragment;
 import com.example.yanghan.gravity.ui.main.MainFragment;
 
 import com.example.yanghan.gravity.ui.setting.SettingFragment;
-import com.example.yanghan.gravity.ui.team.TeamFragment;
+import com.example.yanghan.gravity.ui.team.TeamActivity;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -90,7 +90,8 @@ public class MainActivity extends AppCompatActivity {
                             } else if (drawerItem.getIdentifier() == 2) {
                                 changeFragment(new NewsFragment());
                             }else if (drawerItem.getIdentifier() == 3) {
-                                changeFragment(new TeamFragment());
+                                Intent intent = new Intent(MainActivity.this, TeamActivity.class);
+                                startActivity(intent);
                             }else if (drawerItem.getIdentifier() == 4) {
 
                                 Intent intent = new Intent(MainActivity.this, MeActivity.class);

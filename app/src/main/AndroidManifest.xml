@@ -27,16 +27,13 @@
         <activity
             android:name=".ui.team.GroupMessageActivity"
             android:label="@string/title_activity_group_message" />
-
-        <activity android:name=".ui.team.GroupMessageChangeActivity"></activity>
-
-
-        <activity android:name=".ui.news.NewsDetailActivity"></activity>
-
+        <activity android:name=".ui.team.GroupMessageChangeActivity" />
+        <activity android:name=".ui.news.NewsDetailActivity" />
         <activity android:name=".ui.team.GroupCreateActivity" />
-        <activity android:name=".ui.login.LoginActivity"></activity>
-
-
+        <activity android:name=".ui.login.LoginActivity" />
+        <activity
+            android:name=".ui.team.TeamActivity"
+            android:label="@string/title_activity_team"></activity>
     </application>
 
 </manifest>

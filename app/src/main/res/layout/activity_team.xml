@@ -4,22 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.team.TeamFragment">
+    tools:context=".ui.team.TeamActivity">
 
 
 
-    <com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView
-        android:id="@+id/pullLoadMoreRecyclerView"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_google_and_loadmore_refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+        <com.example.yanghan.gravity.ui.team.LoadMoreListView
+            android:id="@+id/google_and_loadmore_refresh_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <!--<com.example.myfirst.pulltorefreshlist.LoadMoreListView-->
-        <!--android:id="@+id/google_and_loadmore_refresh_listview"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent">-->
+        </com.example.yanghan.gravity.ui.team.LoadMoreListView>
 
-    <!--</com.example.myfirst.pulltorefreshlist.LoadMoreListView>-->
-
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
 
