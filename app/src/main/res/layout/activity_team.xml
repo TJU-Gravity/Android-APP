@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".ui.team.TeamActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/team_toolbar"
@@ -17,7 +21,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+
 
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -49,5 +56,5 @@
         android:src="@android:drawable/ic_input_add"
         app:backgroundTint="@color/colorPrimary" />
 
-
+    </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -48,6 +49,26 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
         initEvent();
         initData();
 
+
+
+        LoadMoreListView listView = (LoadMoreListView) findViewById(R.id.google_and_loadmore_refresh_listview);
+        listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {//设置监听器
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                //  Toast.makeText(getActivity(), map.get("group_name").toString(), Toast.LENGTH_LONG).show();
+
+                Intent intent=new Intent(TeamActivity.this,GroupMessageActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+
+
+
         FloatingActionButton fab = ( FloatingActionButton )findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,8 +90,8 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
         for (int i = 0; i < 10; i++) {
             ListViewItem item = new ListViewItem();
             item.setUserImg(R.mipmap.ic_launcher);
-            item.setUserName("seven" + i);
-            item.setUserComment("这是google官方一个下拉刷新ListView+自定义ListView上拉加载跟多");
+            item.setUserName("第"+i+"支队伍");
+            //item.setUserComment("这是google官方一个下拉刷新ListView+自定义ListView上拉加载跟多");
             items.add(item);
         }
 
@@ -112,8 +133,7 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
      */
     @Override
     public void onRefresh() {
-        //因为本例中没有从网络获取数据，因此这里使用Handler演示4秒延迟来从服务器获取数据的延迟现象，以便于大家
-        // 能够看到listView正在刷新的状态。大家在现实使用时只需要使用run（）{}方法中的代码就行了。
+
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -125,7 +145,7 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
                 // 通知listview刷新数据完毕,让listview停止刷新
                 swipeRefreshLayout.setRefreshing(false);
             }
-        }, 6000);
+        }, 200);
     }
 
     /**
@@ -137,7 +157,7 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
             ListViewItem item = new ListViewItem();
             item.setUserImg(R.mipmap.ic_launcher);
             item.setUserName("seven" + i);
-            item.setUserComment("这是一个下拉刷新，上拉加载更多的ListView");
+           // item.setUserComment("这是一个下拉刷新，上拉加载更多的ListView");
             items.add(item);
         }
     }
@@ -161,7 +181,7 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
                 // 通知listview刷新数据完毕,让listview停止刷新,取消加载跟多
                 loadMoreListView.loadMoreComplete();
             }
-        }, 6000);
+        }, 200);
     }
 
     @Override
