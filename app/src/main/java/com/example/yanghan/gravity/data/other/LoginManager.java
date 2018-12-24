@@ -24,7 +24,7 @@ import okhttp3.Response;
 public class LoginManager {
 
     Context context=null;
-    User user=null;
+    public static User user=null;
     LoginViewModel loginViewModel=null;
 
     //是否登录
@@ -50,7 +50,7 @@ public class LoginManager {
     }
 
     //跳转登录页面
-    public void loginPage(Context context)
+    public static void loginPage(Context context)
     {
         Intent intent = new Intent(context,LoginActivity.class);
         context.startActivity(intent);

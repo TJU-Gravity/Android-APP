@@ -21,7 +21,7 @@ public class RequestManeger {
 
 
 
-    void post(String url, String json,Callback callback)  {
+   public void post(String url, String json,Callback callback)  {
         RequestBody body = RequestBody.create(JSON, json);
         Request request = new Request.Builder()
                 .url(url)

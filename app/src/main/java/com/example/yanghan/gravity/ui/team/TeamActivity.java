@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +15,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.example.yanghan.gravity.R;
+import com.example.yanghan.gravity.data.model.Team;
+import com.example.yanghan.gravity.data.model.User;
+import com.example.yanghan.gravity.data.other.LoginManager;
+import com.example.yanghan.gravity.data.other.RequestManeger;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
@@ -33,6 +39,33 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team);
+        User UserForTeam=new User();
+        UserForTeam.loadUser(this);
+        ObjectMapper mapper = new ObjectMapper();
+        String json="";
+        try
+        {
+            json=mapper.writeValueAsString(UserForTeam);
+            Log.e("login",json);
+        }
+        catch (Exception e)
+        {
+           // Log.e("login","json");
+        }
+
+        RequestManeger requestManeger=new RequestManeger();
+        String response="";
+        TeamListCallBack callback=new TeamListCallBack();
+        requestManeger.post("http://118.25.41.237:8080/team/myTeamList",json,callback);
+
+
+
+
+
+
+
+     //   LoginManager.loginPage(TeamActivity.this);
+
 
         Toolbar team_toolbar = (Toolbar) findViewById(R.id.team_toolbar);
         setSupportActionBar(team_toolbar);

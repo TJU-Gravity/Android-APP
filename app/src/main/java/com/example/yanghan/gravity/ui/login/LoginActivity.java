@@ -8,14 +8,18 @@ import androidx.lifecycle.ViewModelProviders;
 import studio.carbonylgroup.textfieldboxes.SimpleTextChangedWatcher;
 import studio.carbonylgroup.textfieldboxes.TextFieldBoxes;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.yanghan.gravity.MainActivity;
 import com.example.yanghan.gravity.R;
+import com.example.yanghan.gravity.data.other.LoginManager;
 import com.example.yanghan.gravity.databinding.ActivityLoginBinding;
 import com.example.yanghan.gravity.databinding.ActivityMeBinding;
 import com.example.yanghan.gravity.ui.me.MeViewModel;
+import com.example.yanghan.gravity.ui.team.TeamActivity;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 
@@ -67,6 +71,8 @@ public class LoginActivity extends AppCompatActivity {
     {
         Toast.makeText(this,"登录成功",Toast.LENGTH_SHORT).show();
         this.onBackPressed();
+        Intent intent = new Intent(LoginActivity.this, TeamActivity.class);
+        startActivity(intent);
     }
 
     public void invaliad()
