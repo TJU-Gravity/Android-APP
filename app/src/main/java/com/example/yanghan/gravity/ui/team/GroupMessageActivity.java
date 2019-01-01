@@ -120,7 +120,6 @@ public class GroupMessageActivity extends AppCompatActivity {
                 return true;
             case R.id.action_change:
                SwitchToChangePage();
-               FillTheBlank();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -141,12 +140,6 @@ public class GroupMessageActivity extends AppCompatActivity {
      Intent intent=new Intent(GroupMessageActivity.this,GroupMessageChangeActivity.class);
      startActivity(intent);
  }
-
- private void FillTheBlank(){
-        //TODO fill message work
- }
-
-
 
 
 

@@ -31,6 +31,7 @@
         android:id="@+id/swipe_google_and_loadmore_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <com.example.yanghan.gravity.ui.team.LoadMoreListView
             android:id="@+id/google_and_loadmore_refresh_listview"
             android:layout_width="match_parent"
@@ -40,21 +41,18 @@
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-
-
-
-
-
+    </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
+        android:layout_gravity="bottom|right"
         android:layout_margin="15dp"
         android:clickable="true"
         android:src="@android:drawable/ic_input_add"
         app:backgroundTint="@color/colorPrimary" />
 
-    </LinearLayout>
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

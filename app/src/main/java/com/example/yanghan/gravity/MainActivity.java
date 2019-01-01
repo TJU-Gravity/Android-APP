@@ -91,7 +91,8 @@ public class MainActivity extends AppCompatActivity {
                             } else if (drawerItem.getIdentifier() == 2) {
                                 changeFragment(new NewsFragment());
                             }else if (drawerItem.getIdentifier() == 3) {
-                                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                              //  Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                                Intent intent = new Intent(MainActivity.this, TeamActivity.class);
                                 startActivity(intent);
                             }else if (drawerItem.getIdentifier() == 4) {
 

@@ -14,8 +14,13 @@ import android.widget.AdapterView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+
 import com.example.yanghan.gravity.R;
 import com.example.yanghan.gravity.data.model.Team;
+import com.example.yanghan.gravity.data.model.TeamList;
 import com.example.yanghan.gravity.data.model.User;
 import com.example.yanghan.gravity.data.other.LoginManager;
 import com.example.yanghan.gravity.data.other.RequestManeger;
@@ -24,16 +29,72 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, LoadMoreListView.OnRefreshListener{
     private SwipeRefreshLayout swipeRefreshLayout;
-    private LoadMoreListView loadMoreListView;
+        private LoadMoreListView loadMoreListView;
     //对象数据集合
     private ArrayList<ListViewItem> items;
     //listview的数据加载器adapter
     private RefreshListAdapter adapter;
     private Drawer result = null;
+
+
+    class TeamListResponse {
+
+        String code = "";
+        String data = "";
+        String message = "";
+    }
+
+
+    public class TeamListCallBack implements Callback {
+        @Override
+        public void onFailure(Call call, IOException e) {
+            Log.e("request", e.toString());
+
+        }
+
+        @Override
+        public void onResponse(Call call, Response response) throws IOException {
+//
+            Log.e("all the data2: ", response.body().string());
+            ObjectMapper mapper = new ObjectMapper();
+            TeamListResponse loginResponse = null;
+//        loginResponse=mapper.readValue(response.body().string(),LoginResponse.class);
+//        Log.e("all the data: ",loginResponse.toString());
+//        Log.e("codeforme:",loginResponse.code);
+//        Log.e("message",loginResponse.message);
+//        Log.e("data",mapper.writeValueAsString(loginResponse.data));
+
+
+        }
+    }
+
+    public class TeamMessageCallBack implements Callback {
+        @Override
+        public void onFailure(Call call, IOException e) {
+            Log.e("request", e.toString());
+
+        }
+
+        @Override
+        public void onResponse(Call call, Response response) throws IOException {
+//
+            Log.e("all the data2: ", response.body().string());
+            ObjectMapper mapper = new ObjectMapper();
+            TeamListResponse loginResponse = null;
+//        loginResponse=mapper.readValue(response.body().string(),LoginResponse.class);
+//        Log.e("all the data: ",loginResponse.toString());
+//        Log.e("codeforme:",loginResponse.code);
+//        Log.e("message",loginResponse.message);
+//        Log.e("data",mapper.writeValueAsString(loginResponse.data));
+
+
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +153,30 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 //  Toast.makeText(getActivity(), map.get("group_name").toString(), Toast.LENGTH_LONG).show();
+                TeamList teamList=new TeamList();
+                if(teamList.teamID==0)
+                {
+                    Team team=new Team();
+                    team.teamID=teamList.teamID;
+                    team.teamName=teamList.teamName;
+                    ObjectMapper mapper = new ObjectMapper();
+                    String json="";
+                    try
+                    {
+                        json=mapper.writeValueAsString(team);
+                        Log.e("login",json);
+                    }
+                    catch (Exception e)
+                    {
+                        // Log.e("login","json");
+                    }
 
+                    RequestManeger requestManeger=new RequestManeger();
+                    String response="";
+                    TeamMessageCallBack callback=new TeamMessageCallBack();
+                    requestManeger.post("http://118.25.41.237:8080/team/teamDetail",json,callback);
+
+                }
                 Intent intent=new Intent(TeamActivity.this,GroupMessageActivity.class);
                 startActivity(intent);
 
