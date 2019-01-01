@@ -7,7 +7,6 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.library.CircleImageView;
 import com.example.yanghan.gravity.data.model.News;
 
 import androidx.databinding.BindingAdapter;
@@ -33,6 +32,8 @@ public class FavoritesItemViewModel extends ViewModel {
 
 
     }
+
+
 
 
 
