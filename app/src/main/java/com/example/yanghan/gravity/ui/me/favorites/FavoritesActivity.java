@@ -9,18 +9,21 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.yanghan.gravity.R;
+import com.example.yanghan.gravity.data.other.LoginManager;
 import com.example.yanghan.gravity.databinding.ActivityFavoritesBinding;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView;
 
 public class FavoritesActivity extends AppCompatActivity
 {
     private Drawer result = null;
     private FavoritesViewModel mViewModel;
-    private RecyclerView mRecyclerView;
+    private PullLoadMoreRecyclerView mRecyclerView;
     private FavoritesAdapter mAdapter;
     ActivityFavoritesBinding binding;
 
@@ -31,7 +34,7 @@ public class FavoritesActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites);
 
-        mViewModel = ViewModelProviders.of(this).get(FavoritesViewModel.class);
+        mViewModel = new FavoritesViewModel(this);
 
         binding=DataBindingUtil.setContentView(this,R.layout.activity_favorites);
 
@@ -52,7 +55,11 @@ public class FavoritesActivity extends AppCompatActivity
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(false);
 
+
+
         initRecyclerView();
+
+
 
 
     }
@@ -60,17 +67,33 @@ public class FavoritesActivity extends AppCompatActivity
     private void initRecyclerView() {
 
         mRecyclerView = binding.recyclerView;
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setLinearLayout();
 
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setNestedScrollingEnabled(false);
         mAdapter = new FavoritesAdapter(mViewModel.getNewsList(),mViewModel);
         mRecyclerView.setAdapter(mAdapter);
         mViewModel.setAdapter(mAdapter);
+        mRecyclerView.setOnPullLoadMoreListener(new PullLoadMoreRecyclerView.PullLoadMoreListener() {
+            @Override
+            public void onRefresh() {
+                Log.e("Refresh","!");
 
+            }
+
+            @Override
+            public void onLoadMore() {
+                Log.e("LoadMore","!");
+                mViewModel.loadMore();
+            }
+        });
     }
 
-
+    public void setPullLoadMoreCompleted()
+    {
+        Log.e("loading","stop!");
+        mRecyclerView.setPullLoadMoreCompleted();
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

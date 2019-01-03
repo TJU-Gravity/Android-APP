@@ -31,12 +31,17 @@
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:title="我收藏的赛事"/>
 
-            <view class="androidx.recyclerview.widget.RecyclerView"
+            <com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/item_favorites_view"/>
+            <!--view class="androidx.recyclerview.widget.RecyclerView"
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:listitem="@layout/item_favorites_view"
-                />
+                /-->
 
         </LinearLayout>
 
