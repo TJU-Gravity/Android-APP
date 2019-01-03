@@ -19,7 +19,7 @@ public class PostItemViewModel extends ViewModel {
 
  public String getImageUrl() {
   // The URL will usually come from a model (i.e Profile)
-  return post.headshot;
+  return "http://gravity-image-1256225215.cos.ap-shanghai.myqcloud.com/headshot/default.jpg";
  }
 
  @BindingAdapter({"bind:imageUrl"})
