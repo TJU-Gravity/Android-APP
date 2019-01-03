@@ -28,15 +28,21 @@
             android:name=".ui.team.GroupMessageActivity"
             android:label="@string/title_activity_group_message" />
 
+<<<<<<< HEAD
         <activity android:name=".ui.team.GroupMessageChangeActivity"></activity>
 
 
+=======
+>>>>>>> 23c7d3b3ec69dcf6812b50acae85e4f21969dd7c
         <activity android:name=".ui.news.NewsDetailActivity"></activity>
 
         <activity android:name=".ui.team.GroupCreateActivity" />
         <activity android:name=".ui.login.LoginActivity"></activity>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 23c7d3b3ec69dcf6812b50acae85e4f21969dd7c
     </application>
 
 </manifest>

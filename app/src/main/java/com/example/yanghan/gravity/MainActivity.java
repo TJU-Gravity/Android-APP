@@ -166,7 +166,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String s) {
                 // UserFeedback.show( "SearchOnQueryTextChanged: " + s);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 23c7d3b3ec69dcf6812b50acae85e4f21969dd7c
                 return false;
             }
         });

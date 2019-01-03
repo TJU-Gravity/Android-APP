@@ -61,7 +61,10 @@ public class FavoritesActivity extends AppCompatActivity
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 23c7d3b3ec69dcf6812b50acae85e4f21969dd7c
     }
 
     private void initRecyclerView() {

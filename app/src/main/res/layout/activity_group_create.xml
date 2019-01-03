@@ -109,7 +109,11 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
+<<<<<<< HEAD
                 android:layout_height="100dp"
+=======
+                android:layout_height="60dp"
+>>>>>>> 23c7d3b3ec69dcf6812b50acae85e4f21969dd7c
                 android:orientation="horizontal">
 
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
@@ -120,7 +124,12 @@
                     android:layout_marginStart="20dp"
 
                     android:layout_marginEnd="20dp"
+<<<<<<< HEAD
                     app:labelText="添加初始成员">
+=======
+                    app:labelText="添加初始成员"
+                    app:maxCharacters="50">
+>>>>>>> 23c7d3b3ec69dcf6812b50acae85e4f21969dd7c
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/member_note"
@@ -136,7 +145,11 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+<<<<<<< HEAD
                 android:gravity="center_vertical|center_horizontal"
+=======
+                android:gravity="bottom|center_horizontal"
+>>>>>>> 23c7d3b3ec69dcf6812b50acae85e4f21969dd7c
                 android:orientation="vertical">
 
                 <Button

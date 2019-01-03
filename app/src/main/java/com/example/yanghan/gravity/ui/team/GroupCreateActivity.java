@@ -71,11 +71,18 @@ public class GroupCreateActivity extends AppCompatActivity {
 
     private void init(){
 
+<<<<<<< HEAD
 
         name=(ExtendedEditText )findViewById(R.id.edit_note);
         match=(ExtendedEditText)findViewById(R.id.match_edit_note);
         profile=(ExtendedEditText)findViewById(R.id.profile_note);
         member=(ExtendedEditText)findViewById(R.id.member_note);
+=======
+//        name=(EditText)findViewById(R.id.nameEdit);
+//        match=(EditText)findViewById(R.id.matchEdit);
+//        member=(EditText)findViewById(R.id.memberEdit);
+//        profile=(EditText)findViewById(R.id.profileEdit);
+>>>>>>> 23c7d3b3ec69dcf6812b50acae85e4f21969dd7c
         button=(Button)findViewById(R.id.button);
 
 
