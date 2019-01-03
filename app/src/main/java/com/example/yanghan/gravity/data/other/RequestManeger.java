@@ -2,6 +2,8 @@ package com.example.yanghan.gravity.data.other;
 
 import android.util.Log;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.IOException;
 
 import okhttp3.Call;
@@ -21,13 +23,35 @@ public class RequestManeger {
 
 
 
-    void post(String url, String json,Callback callback)  {
+    public void post(String url, String json,Callback callback)  {
         RequestBody body = RequestBody.create(JSON, json);
         Request request = new Request.Builder()
                 .url(url)
                 .post(body)
                 .build();
 
+        Call call= client.newCall(request);
+        call.enqueue(callback);
+
+    }
+    public void post(String url, Object o,Callback callback)  {
+        ObjectMapper mapper = new ObjectMapper();
+        String json="";
+        try
+        {
+            json=mapper.writeValueAsString(o);
+            Log.e("json",json);
+        }
+        catch (Exception e)
+        {
+            Log.e("json",e.toString());
+        }
+
+        RequestBody body = RequestBody.create(JSON, json);
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
 
         Call call= client.newCall(request);
         call.enqueue(callback);

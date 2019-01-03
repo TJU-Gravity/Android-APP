@@ -19,11 +19,33 @@
         android:layout_height="match_parent">
 
 
-        <com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView
-            android:id="@+id/recycler_view"
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/item_post_view"/>
+            android:layout_height="match_parent">
+            <com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/item_post_view"/>
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@id/floatingActionButton"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:clickable="true"
+
+                app:backgroundTint="@color/colorAccent"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="18dp"
+                android:layout_marginBottom="18dp"
+                app:srcCompat="@drawable/baseline_add_white_18dp">
+
+            </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+        </RelativeLayout>
+
+
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

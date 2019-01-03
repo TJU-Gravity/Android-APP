@@ -41,10 +41,10 @@ public class LoginManager {
     //得到当前用户
     public User getCurrentUser(Context context)
     {
-        User user=new User();
+
+        user=new User();
         user.loadUser(context);
         //http请求
-
 
         return user;
     }

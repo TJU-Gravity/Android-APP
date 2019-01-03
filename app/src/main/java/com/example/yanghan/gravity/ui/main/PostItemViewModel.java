@@ -24,12 +24,10 @@ public class PostItemViewModel extends ViewModel {
  @BindingAdapter({"bind:imageUrl"})
  public static void loadImage(ImageView view, String imageUrl) {
   Log.e("url",imageUrl);
-
   Glide.with(view.getContext())
           .load(imageUrl)
           .apply(new RequestOptions().override(25,25).error(new ColorDrawable(Color.GRAY)).centerCrop())
           .into(view);
-
 
  }
 

@@ -55,11 +55,7 @@ public class FavoritesActivity extends AppCompatActivity
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(false);
 
-
-
         initRecyclerView();
-
-
 
 
     }

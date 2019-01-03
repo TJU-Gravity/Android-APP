@@ -7,11 +7,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 
 import com.example.yanghan.gravity.R;
 import com.example.yanghan.gravity.databinding.ActivityPostDetailBinding;
-import com.example.yanghan.gravity.ui.main.MainViewModel;
-import com.example.yanghan.gravity.ui.main.PostAdapter;
 import com.example.yanghan.gravity.ui.main.reply.ReplyAdapter;
-import com.example.yanghan.gravity.ui.main.reply.ReplyItemViewModel;
-import com.example.yanghan.gravity.ui.me.favorites.FavoritesViewModel;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView;

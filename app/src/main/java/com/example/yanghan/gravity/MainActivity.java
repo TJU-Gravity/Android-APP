@@ -14,6 +14,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.yanghan.gravity.data.model.User;
+import com.example.yanghan.gravity.data.other.LoginManager;
 import com.example.yanghan.gravity.ui.me.MeActivity;
 import com.example.yanghan.gravity.ui.news.NewsFragment;
 import com.example.yanghan.gravity.ui.main.MainFragment;
@@ -34,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private  Drawer result=null;
     private AccountHeader headerResult=null;
     private SearchView searchView;
+    private LoginManager loginManager=new LoginManager();
+    private User user=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +47,20 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
-
+        initUser();
 
         //------------------------------------------------
         //侧边栏——简约
+        IProfile profile;
+        if(user!=null)
+        {
+            profile = new ProfileDrawerItem().withName(user.nickname).withEmail(user.email);
+        }
+        else
+        {
+            profile = new ProfileDrawerItem().withName("未登录");
+        }
 
-        IProfile profile = new ProfileDrawerItem().withName("Mike Penz").withEmail("mikepenz@gmail.com").withIcon(getResources().getDrawable(R.drawable.headshot));
         headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withHeaderBackground(getResources().getDrawable(R.drawable.header_test))
@@ -118,14 +130,39 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             changeFragment(new MainFragment());
         }
+
+    }
+    void initUser()
+    {
+        if(loginManager.isLogin(this))
+        {
+            user=loginManager.getCurrentUser(this);
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        initUser();
+        IProfile profile;
+        if(user!=null)
+        {
+            profile = new ProfileDrawerItem().withName(user.nickname).withEmail(user.email);
+        }
+        else
+        {
+            profile = new ProfileDrawerItem().withName("未登录");
+        }
+        headerResult.clear();
+        headerResult.addProfiles(profile);
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         //add the values which need to be saved from the drawer to the bundle
-        outState = result.saveInstanceState(outState);
+//        outState = result.saveInstanceState(outState);
         //add the values which need to be saved from the accountHeader to the bundle
-        outState = headerResult.saveInstanceState(outState);
+  //      outState = headerResult.saveInstanceState(outState);
         super.onSaveInstanceState(outState);
     }
 

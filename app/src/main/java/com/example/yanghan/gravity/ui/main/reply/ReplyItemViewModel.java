@@ -7,13 +7,13 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.yanghan.gravity.data.model.Post;
+import com.example.yanghan.gravity.data.model.Reply;
 
 import androidx.databinding.BindingAdapter;
 import androidx.lifecycle.ViewModel;
 
 public class ReplyItemViewModel extends ViewModel {
- public Post post=new Post();
+ public Reply reply=new Reply();
 
  public String getImageUrl() {
   // The URL will usually come from a model (i.e Profile)
