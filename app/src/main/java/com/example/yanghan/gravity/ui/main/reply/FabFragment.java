@@ -91,7 +91,7 @@ public class FabFragment extends AAH_FabulousFragment implements MultiResponse {
         reply.postid=((PostDetailViewModel)((PostDetailActivity)getActivity()).getViewModel()).postDetail.post.postId;
         reply.replybody=text;
         RequestManeger requestManeger=new RequestManeger();
-        requestManeger.post("http://192.168.1.101:8080/reply/add", reply, new Callback() {
+        requestManeger.post("http://118.25.41.237:8080/reply/add", reply, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e("onFailure: ",e.toString() );
