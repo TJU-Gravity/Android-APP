@@ -3,10 +3,12 @@ package com.example.yanghan.gravity.ui.main;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 
 import com.example.yanghan.gravity.data.model.Page;
 import com.example.yanghan.gravity.data.model.Post;
+import com.example.yanghan.gravity.data.model.PostResult;
 import com.example.yanghan.gravity.data.model.Result;
 import com.example.yanghan.gravity.data.other.LoginManager;
 import com.example.yanghan.gravity.data.other.RequestManeger;
@@ -33,7 +35,7 @@ import okhttp3.Response;
 
 public class MainViewModel extends ViewModel implements PostAdapter.PostAdapterListener{
     // TODO: Implement the ViewModel
-    public final ArrayList<PostItemViewModel> postsArrayList = new ArrayList<>();
+    public  ArrayList<PostItemViewModel> postsArrayList = new ArrayList<>();
     private Page page;
     private LoginManager loginManager=new LoginManager();
 
@@ -52,40 +54,51 @@ public class MainViewModel extends ViewModel implements PostAdapter.PostAdapterL
         contextService=f;
         recyclerViewService=f;
 
-
     }
 
     public void initPost()
     {
         ListParam listParam=new ListParam();
         listParam.page=1;
-        listParam.size=10;
+        listParam.size=8;
         getPosts(listParam);
 
     }
 
 
     public ArrayList<PostItemViewModel> getPostList() {
-        Log.e("get","newsList");
+        Log.e("get","postList");
         return postsArrayList;
+
+    }
+    public void refresh()
+    {
+        postsArrayList = new ArrayList<>();
+        initPost();
 
     }
 
 
     public void loadMore()
     {
-        Log.e("loading","post");
-        ListParam listParam=new ListParam();
-        listParam.page=1;
-        listParam.size=10;
-        getPosts(listParam);
+        if(page.hasNextPage) {
+            Log.e("loading", "post");
+            ListParam listParam = new ListParam();
+            listParam.page = page.nextPage;
+            listParam.size = page.size;
+            getPosts(listParam);
+        }
+        else
+        {
+            Toast.makeText(contextService.getContext(), "到底了", Toast.LENGTH_SHORT).show();
+            recyclerViewService.stopLoading();
+        }
 
     }
 
     public static class ListParam
     {
         String sortedBy="";
-
         Integer page;
         Integer size;
     }
@@ -94,7 +107,7 @@ public class MainViewModel extends ViewModel implements PostAdapter.PostAdapterL
     {
 
         RequestManeger requestManeger=new RequestManeger();
-        requestManeger.post("http://192.168.1.100:8080/post/list", listParam, new Callback() {
+        requestManeger.post("http://192.168.1.101:8080/post/list", listParam, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e( "onFailure: ", e.toString());
@@ -109,15 +122,18 @@ public class MainViewModel extends ViewModel implements PostAdapter.PostAdapterL
 
                 try{
                     ObjectMapper mapper = new ObjectMapper();
-                    ArrayList<Post> newData=mapper.convertValue(result.data.list, new TypeReference<ArrayList<Post>>() { });
+                    ArrayList<PostResult> newData=mapper.convertValue(result.data.list, new TypeReference<ArrayList<PostResult>>() { });
                     result.data.list=newData;
                     page=result.data;
-                    Log.e("onResponse: ",String.valueOf(newData.size()) );
-                    for (Object post:newData)
+
+                    for (PostResult post:newData)
                     {
+                       post.genDescription();
                         PostItemViewModel a = new PostItemViewModel();
-                        a.post=(Post) post;
+                        a.post=(PostResult) post;
                         postsArrayList.add(a);
+
+
                     }
 
                 }
@@ -125,8 +141,6 @@ public class MainViewModel extends ViewModel implements PostAdapter.PostAdapterL
                 {
                     Log.e("onResponse: ", e.toString());
                 }
-
-
 
                 recyclerViewService.notifyDataChanged();
                 recyclerViewService.stopLoading();
@@ -142,6 +156,8 @@ public class MainViewModel extends ViewModel implements PostAdapter.PostAdapterL
     {
 
         Intent intent = new Intent(contextService.getContext(),PostDetailActivity.class);
+
+        intent.putExtra("ID",post.post.postId);
         contextService.getContext().startActivity(intent);
 
     }

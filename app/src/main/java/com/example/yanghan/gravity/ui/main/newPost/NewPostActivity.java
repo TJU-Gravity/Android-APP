@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.yanghan.gravity.R;
@@ -24,6 +26,8 @@ public class NewPostActivity extends AppCompatActivity  implements MultiResponse
     private Drawer result = null;
     private NewPostViewModel mViewModel;
     private ActivityNewPostBinding binding;
+    public Spinner spinner;
+    public ArrayAdapter<String> arrAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +68,17 @@ public class NewPostActivity extends AppCompatActivity  implements MultiResponse
             }
         });
 
+        spinner = (Spinner) findViewById(R.id.spinner);
+
+        //数据
+
+
+        //适配器
+        arrAdapter= new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,mViewModel.teamList);
+        //设置样式
+        arrAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //加载适配器
+        spinner.setAdapter(arrAdapter);
 
     }
     @Override

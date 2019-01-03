@@ -32,7 +32,9 @@
         <activity android:name=".ui.news.NewsDetailActivity" />
         <activity android:name=".ui.team.GroupCreateActivity" />
         <activity android:name=".ui.login.LoginActivity" />
-        <activity android:name=".ui.main.postDetail.PostDetailActivity"></activity>
+        <activity android:name=".ui.main.postDetail.PostDetailActivity" />
+        <activity android:name=".ui.login.register.NewUserActivity" />
+        <activity android:name=".ui.visitingCard.VisitingCardActivity"></activity>
     </application>
 
 </manifest>

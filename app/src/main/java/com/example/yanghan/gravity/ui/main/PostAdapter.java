@@ -32,7 +32,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder >
         }
         ItemPostViewBinding binding =
                 DataBindingUtil.inflate(layoutInflater, R.layout.item_post_view, parent, false);
-        return new MyViewHolder(binding);
+
+
+        MyViewHolder myViewHolder=new MyViewHolder(binding);
+        binding.invalidateAll();
+        return myViewHolder;
     }
 
     @Override
@@ -57,18 +61,21 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder >
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private final ItemPostViewBinding binding;
+        public final ItemPostViewBinding binding;
 
         public MyViewHolder(final ItemPostViewBinding itemBinding) {
             super(itemBinding.getRoot());
             this.binding = itemBinding;
 
         }
+
     }
 
     public interface PostAdapterListener {
         void onPostClicked(PostItemViewModel post);
     }
+
+
 
 
 }

@@ -45,17 +45,16 @@ public class MeViewModel extends ViewModel {
         if(user.loadUser(context));//http请求后废弃
 
 
-
     }
     public String getImageUrl() {
 
-        return user.headshot;
+        return "http://gravity-image-1256225215.cos.ap-shanghai.myqcloud.com/headshot/default.jpg";
 
     }
 
     @BindingAdapter({"bind:imageUrl"})
     public static void loadImage(CircleImageView view, String imageUrl) {
-        Log.e("url",imageUrl);
+       if(imageUrl!=null)
 
         Glide.with(view.getContext())
                 .load(imageUrl)

@@ -15,8 +15,7 @@ public class Post {
     @JsonProperty("posterid")
     public String posterID="";
 
-    @JsonProperty("postnickname")
-    public String posterNickname="";
+
 
     @JsonProperty("postingtime")
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -36,4 +35,12 @@ public class Post {
 
     @JsonProperty("teamid")
     public int teamID=0;
+
+    public void genDescription()
+    {
+        if(description==null||description.equals(""))
+        {
+            description=postBody.substring(0,30<postBody.length()?30:postBody.length());
+        }
+    }
 }

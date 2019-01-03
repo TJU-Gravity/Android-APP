@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,9 +14,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.yanghan.gravity.data.model.User;
 import com.example.yanghan.gravity.data.other.LoginManager;
+import com.example.yanghan.gravity.data.other.SearchManager;
+import com.example.yanghan.gravity.ui.commonInterface.ContextService;
 import com.example.yanghan.gravity.ui.me.MeActivity;
 import com.example.yanghan.gravity.ui.news.NewsFragment;
 import com.example.yanghan.gravity.ui.main.MainFragment;
@@ -32,7 +36,7 @@ import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ContextService {
     private  Drawer result=null;
     private AccountHeader headerResult=null;
     private SearchView searchView;
@@ -192,11 +196,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 // Toast like print
-                //UserFeedback.show( "SearchOnQueryTextSubmit: " + query);
-                if( ! searchView.isIconified()) {
-                    searchView.setIconified(true);
-                }
-                myActionMenuItem.collapseActionView();
+                Log.e( "onQueryTextSubmit: ","!" );
+                SearchManager searchManager=new SearchManager();
+                searchManager.searchUser(query,(ContextService) getContext());
                 return false;
             }
             @Override
@@ -207,5 +209,11 @@ public class MainActivity extends AppCompatActivity {
         });
         return true;
 
+    }
+
+
+    @Override
+    public Context getContext() {
+        return this;
     }
 }

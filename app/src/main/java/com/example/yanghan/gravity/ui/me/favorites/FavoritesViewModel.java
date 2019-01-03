@@ -2,10 +2,26 @@ package com.example.yanghan.gravity.ui.me.favorites;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.example.yanghan.gravity.data.model.News;
+import com.example.yanghan.gravity.data.model.Page;
+import com.example.yanghan.gravity.data.model.PostResult;
+import com.example.yanghan.gravity.data.model.Result;
+import com.example.yanghan.gravity.data.other.LoginManager;
+import com.example.yanghan.gravity.data.other.RequestManeger;
+import com.example.yanghan.gravity.ui.commonInterface.RecyclerViewService;
+import com.example.yanghan.gravity.ui.main.PostItemViewModel;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 import androidx.lifecycle.ViewModel;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class FavoritesViewModel extends ViewModel  implements FavoritesAdapter.FavoritesAdapterListener
 {
@@ -13,23 +29,77 @@ public class FavoritesViewModel extends ViewModel  implements FavoritesAdapter.F
     public final ArrayList<FavoritesItemViewModel> favoritesArrayList = new ArrayList<>();
     private FavoritesAdapter mAdapter;
     private FavoritesActivity favoritesActivity;
+    private Page page;
+    private RecyclerViewService recyclerViewService;
     public FavoritesViewModel(FavoritesActivity f)
     {
         super();
-        initNews();
+
         Log.e("init","Favorites");
         favoritesActivity=f;
+        recyclerViewService=(RecyclerViewService)f;
+        initNews();
 
+    }
+    public static class ListParam
+    {
+        String username="";
+        int page;
+        int size;
     }
     private void initNews()
     {
-        for (int i = 1; i < 10; i++) {
-            FavoritesItemViewModel news = new FavoritesItemViewModel();
-            news.news.title="大学生数学建模竞赛"+Integer.toString(i);
-            favoritesArrayList.add(news);
-        }
+        ListParam listParam=new ListParam();
+        LoginManager loginManager=new LoginManager();
+        listParam.username=loginManager.getCurrentUser(favoritesActivity).username;
+        listParam.page=1;
+        listParam.size=8;
+        getNews(listParam);
 
-        Log.e("init","");
+    }
+
+    private void getNews(ListParam listParam)
+    {
+        RequestManeger requestManeger=new RequestManeger();
+        requestManeger.post("http://192.168.1.101:8080/usernews/favorites", listParam, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e( "onFailure: ", e.toString());
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+
+                Result result=Result.mapper(response.body().string());
+                Log.e("onResponse: ",String.valueOf(result.data.list.size()) );
+
+                try{
+                    ObjectMapper mapper = new ObjectMapper();
+                    ArrayList<News> newData=mapper.convertValue(result.data.list, new TypeReference<ArrayList<News>>() { });
+                    result.data.list=newData;
+                    page=result.data;
+
+                    for (Object news:newData)
+                    {
+                        FavoritesItemViewModel a = new FavoritesItemViewModel();
+                        a.news=(News) news;
+                        favoritesArrayList.add(a);
+
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    Log.e("onResponse: ", e.toString());
+                }
+
+                recyclerViewService.notifyDataChanged();
+                recyclerViewService.stopLoading();
+
+            }
+        });
+
     }
     public void setAdapter(FavoritesAdapter a)
     {
@@ -46,15 +116,20 @@ public class FavoritesViewModel extends ViewModel  implements FavoritesAdapter.F
 
     public void loadMore()
     {
-        Log.e("loading","news");
-
-        for (int i = 1; i < 10; i++) {
-            FavoritesItemViewModel a = new FavoritesItemViewModel();
-            a.news.title="contestNews"+Integer.toString(i);
-            favoritesArrayList.add(a);
+        if(page.hasNextPage)
+        {
+            ListParam listParam = new ListParam();
+            LoginManager loginManager = new LoginManager();
+            listParam.username = loginManager.getCurrentUser(favoritesActivity).username;
+            listParam.page = page.nextPage;
+            listParam.size = page.size;
+            getNews(listParam);
         }
-        mAdapter.notifyDataSetChanged();
-        favoritesActivity.setPullLoadMoreCompleted();
+        else
+        {
+            Toast.makeText(favoritesActivity, "到底了", Toast.LENGTH_SHORT).show();
+            recyclerViewService.stopLoading();
+        }
     }
     @Override
     public void onNewsClicked(FavoritesItemViewModel news) {

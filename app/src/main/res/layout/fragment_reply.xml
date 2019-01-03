@@ -25,16 +25,69 @@
             android:layout_marginTop="8dp"
             android:padding="8dp"
             android:background="@drawable/round_close_white_18dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="40dp"
+            android:paddingBottom="10dp">
 
-        <TextView
-            android:layout_marginTop="64dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:text="ViewMain"
-            android:textColor="@android:color/white"
-            android:textSize="22sp" />
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/body_box"
+                    app:primaryColor="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+
+                    app:labelText="回复"
+                    app:maxCharacters="250"
+                    app:hasClearButton="true"
+                    >
+
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        app:panelBackgroundColor="@color/white"
+                        android:id="@+id/introduction"
+                        app:primaryColor="@color/white"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:inputType="textMultiLine"
+
+                        />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            </LinearLayout>
+
+
+
+            <Button
+
+                android:id="@+id/btn_commit"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="提交"
+                android:gravity="center"
+                android:textColor="@color/colorAccent"
+                android:background="@color/white"/>
+        </LinearLayout>
+
 
         <LinearLayout
             android:id="@+id/ll_buttons"

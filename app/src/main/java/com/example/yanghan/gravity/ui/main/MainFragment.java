@@ -64,35 +64,33 @@ public class MainFragment extends Fragment implements PostAdapter.PostAdapterLis
 
     private void initRecyclerView() {
 
-                        mRecyclerView = binding.recyclerView;
+        mRecyclerView = binding.recyclerView;
+        mAdapter=new PostAdapter(mViewModel.getPostList(),mViewModel);
 
-
-                        mAdapter=new PostAdapter(mViewModel.getPostList(),mViewModel);
-
-                        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setAdapter(mAdapter);
 
 
 
-                        mRecyclerView.setLinearLayout();
+        mRecyclerView.setLinearLayout();
 
-                        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-                        mRecyclerView.setNestedScrollingEnabled(false);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setNestedScrollingEnabled(false);
 
-                        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setAdapter(mAdapter);
 
-                        mRecyclerView.setOnPullLoadMoreListener(new PullLoadMoreRecyclerView.PullLoadMoreListener() {
-                            @Override
-                            public void onRefresh() {
-                                Log.e("Refresh","!");
+        mRecyclerView.setOnPullLoadMoreListener(new PullLoadMoreRecyclerView.PullLoadMoreListener() {
+            @Override
+            public void onRefresh() {
+                Log.e("Refresh","!");
+                mViewModel.refresh();
+            }
 
-                            }
-
-                            @Override
-                            public void onLoadMore() {
-                                Log.e("LoadMore","!");
-                                mViewModel.loadMore();
-                            }
-                        });
+            @Override
+            public void onLoadMore() {
+                Log.e("LoadMore","!");
+                mViewModel.loadMore();
+            }
+        });
         }
 
 

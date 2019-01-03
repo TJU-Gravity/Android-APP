@@ -3,9 +3,9 @@ package com.example.yanghan.gravity.data.model;
 import java.util.Date;
 
 public class Reply {
-    public float replyid;
+    public int replyid;
 
-    public float postid;
+    public int postid;
 
     public String posterid="";
     public String posterName="";

@@ -132,7 +132,7 @@ public class LoginManager {
         RequestManeger requestManeger=new RequestManeger();
         String response="";
         LoginCallback callback=new LoginCallback();
-        requestManeger.post("http://118.25.41.237:8080/user/login",json,callback);
+        requestManeger.post("http://192.168.1.101:8080/user/login",json,callback);
 
 
     }

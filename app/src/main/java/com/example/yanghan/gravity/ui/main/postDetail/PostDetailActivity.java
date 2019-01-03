@@ -3,33 +3,41 @@ package com.example.yanghan.gravity.ui.main.postDetail;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModel;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 
 import com.example.yanghan.gravity.R;
 import com.example.yanghan.gravity.databinding.ActivityPostDetailBinding;
+import com.example.yanghan.gravity.ui.commonInterface.ContextService;
+import com.example.yanghan.gravity.ui.commonInterface.MultiResponse;
+import com.example.yanghan.gravity.ui.commonInterface.RecyclerViewService;
 import com.example.yanghan.gravity.ui.main.reply.ReplyAdapter;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 
-public class PostDetailActivity extends AppCompatActivity  {
+public class PostDetailActivity extends AppCompatActivity implements ContextService ,MultiResponse,RecyclerViewService {
 
     private PostDetailViewModel mViewModel;
-    private ActivityPostDetailBinding binding;
+    public ActivityPostDetailBinding binding;
     private Drawer result = null;
     private PullLoadMoreRecyclerView mRecyclerView;
-    private ReplyAdapter mAdapter;
+    public ReplyAdapter mAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_detail);
 
-        mViewModel = new PostDetailViewModel();
+
+        mViewModel = new PostDetailViewModel(this);
 
         binding=DataBindingUtil.setContentView(this,R.layout.activity_post_detail);
 
@@ -55,6 +63,11 @@ public class PostDetailActivity extends AppCompatActivity  {
         initRecyclerView();
 
 
+    }
+
+    public ViewModel getViewModel()
+    {
+        return  mViewModel;
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -97,18 +110,61 @@ public class PostDetailActivity extends AppCompatActivity  {
         mRecyclerView.setOnPullLoadMoreListener(new PullLoadMoreRecyclerView.PullLoadMoreListener() {
             @Override
             public void onRefresh() {
-                mRecyclerView.setPullLoadMoreCompleted();
 
+                mViewModel.refresh();
             }
 
             @Override
             public void onLoadMore() {
                 Log.e("LoadMore","!");
                 //mViewModel.loadMore();
+                mRecyclerView.setPullLoadMoreCompleted();
             }
         });
 
     }
 
 
+
+    @Override
+    public Context getContext() {
+        return this;
+
+    }
+
+    @Override
+    public void failed() {
+
+    }
+
+    @Override
+    public void succeed() {
+        runOnUiThread(new Runnable() {
+            public void run() {
+                binding.invalidateAll();
+                mAdapter.notifyDataSetChanged();
+            }});
+
+    }
+
+    @Override
+    public void error() {
+
+    }
+
+    @Override
+    public void stopLoading() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mRecyclerView.setPullLoadMoreCompleted();
+            }
+        });
+    }
+
+
+    @Override
+    public void notifyDataChanged() {
+
+    }
 }
