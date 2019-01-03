@@ -107,7 +107,7 @@ public class MainViewModel extends ViewModel implements PostAdapter.PostAdapterL
     {
 
         RequestManeger requestManeger=new RequestManeger();
-        requestManeger.post("http://192.168.1.101:8080/post/list", listParam, new Callback() {
+        requestManeger.post("http://118.25.41.237:8080/post/list", listParam, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e( "onFailure: ", e.toString());

@@ -61,7 +61,7 @@ public class FavoritesViewModel extends ViewModel  implements FavoritesAdapter.F
     private void getNews(ListParam listParam)
     {
         RequestManeger requestManeger=new RequestManeger();
-        requestManeger.post("http://192.168.1.101:8080/usernews/favorites", listParam, new Callback() {
+        requestManeger.post("http://118.25.41.237:8080/usernews/favorites", listParam, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e( "onFailure: ", e.toString());

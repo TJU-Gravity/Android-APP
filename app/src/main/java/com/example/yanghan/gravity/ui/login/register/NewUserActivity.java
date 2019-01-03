@@ -130,7 +130,7 @@ public class NewUserActivity extends AppCompatActivity {
     public void commit()
     {
         final RequestManeger requestManeger=new RequestManeger();
-        requestManeger.post("http://192.168.1.101:8080/user/add", user, new Callback() {
+        requestManeger.post("http://118.25.41.237:8080/user/add", user, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e( "onFailure: ",e.toString());

@@ -57,7 +57,7 @@ public class NewPostViewModel extends ViewModel {
         Param param=new Param();
         param.username=loginManager.getCurrentUser(contextService.getContext()).username;
         RequestManeger requestManeger=new RequestManeger();
-        requestManeger.post("http://192.168.1.101:8080/team/myteams", param, new Callback() {
+        requestManeger.post("http://118.25.41.237:8080/team/myteams", param, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e("onFailure: ", e.toString());
@@ -120,7 +120,7 @@ public class NewPostViewModel extends ViewModel {
             Log.e("json",e.toString());
         }
 
-        requestManeger.post("http://192.168.1.101:8080/post/add", json, new Callback() {
+        requestManeger.post("http://118.25.41.237:8080/post/add", json, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e( "onFailure: ",e.toString() );

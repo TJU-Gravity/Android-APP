@@ -37,7 +37,7 @@ public class SearchManager {
         RequestManeger requestManeger=new RequestManeger();
         RequestBody requestBody=new RequestBody();
         requestBody.username=username;
-        requestManeger.post("http://192.168.1.101:8080/user/detail", requestBody, new Callback() {
+        requestManeger.post("http://118.25.41.237:8080/user/detail", requestBody, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e("onFailure: ",e.toString() );
@@ -86,7 +86,7 @@ public class SearchManager {
         RequestManeger requestManeger=new RequestManeger();
         RequestBody requestBody=new RequestBody();
         requestBody.username=username;
-        requestManeger.post("http://192.168.1.101:8080/user/detail", requestBody, new Callback() {
+        requestManeger.post("http://118.25.41.237:8080/user/detail", requestBody, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e("onFailure: ",e.toString() );

@@ -76,7 +76,7 @@ public class PostDetailViewModel extends ViewModel implements ReplyAdapter.Reply
 
         body.ID= ((PostDetailActivity)contextService.getContext()).getIntent().getIntExtra("ID",0);
         final RequestManeger requestManeger=new RequestManeger();
-        requestManeger.post("http://192.168.1.101:8080/post/detail", body, new Callback() {
+        requestManeger.post("http://118.25.41.237:8080/post/detail", body, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e("onFailure: ", e.toString());
