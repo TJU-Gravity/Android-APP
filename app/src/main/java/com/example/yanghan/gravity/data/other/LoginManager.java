@@ -58,7 +58,7 @@ public class LoginManager {
 
     public static class LoginReponse
     {
-        String code="";
+        int code=0;
         User data=null;
         String message="";
     }
@@ -84,7 +84,7 @@ public class LoginManager {
             LoginReponse loginReponse=null;
             loginReponse=mapper.readValue(response.body().string(),LoginReponse.class);
 
-            if(loginReponse!=null&&loginReponse.code.equals("400"))
+            if(loginReponse!=null&&loginReponse.code==400)
             {
                 ((Activity)context).runOnUiThread(new Runnable() {
                 @Override
