@@ -11,6 +11,9 @@ import java.util.ArrayList;
 public class User
 {
     public String username="";
+
+    public String introduction="";
+
     public String nickname="";
     public String pwd="";
     public String gender="";
@@ -20,16 +23,18 @@ public class User
     public String phonenumber="";
     public String userprivileges="";
     public String introduction="";
+
     public String email="123@example.com";
 
 
     public void saveUser(Context context,boolean login) {
-//获取sharedPreferences对象
+
         SharedPreferences sharedPreferences = context.getSharedPreferences("person", 0);
         //获取editor对象
         SharedPreferences.Editor editor = sharedPreferences.edit();//获取编辑器
         //存储键值对
         editor.putString("username", username);
+
         editor.putString("nickname", nickname);
         editor.putString("password", pwd);
         editor.putString("gender", gender);
@@ -37,6 +42,8 @@ public class User
         editor.putString("email", email);
         editor.putString("introduction", introduction);
 
+
+        editor.putString("password", pwd);
 
         editor.putBoolean("login", login);
 
@@ -50,12 +57,16 @@ public class User
         SharedPreferences sharedPreferences = context.getSharedPreferences("person", 0);
         //获取editor对象
        username=sharedPreferences.getString("username","");
+
         nickname=sharedPreferences.getString("nickname","");
        pwd=sharedPreferences.getString("password","");
         gender=sharedPreferences.getString("gender","");
         headshot=sharedPreferences.getString("headshot","");
         email=sharedPreferences.getString("email","");
         introduction=sharedPreferences.getString("introduction","");
+
+
+       password=sharedPreferences.getString("password","");
 
 
        Log.e("username",username);

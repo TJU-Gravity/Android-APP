@@ -23,17 +23,21 @@ public class RequestManeger {
 
 
 
-    public void post(String url, String json,Callback callback)  {
+
+   public void post(String url, String json,Callback callback)  {
+
         RequestBody body = RequestBody.create(JSON, json);
         Request request = new Request.Builder()
                 .url(url)
                 .post(body)
                 .build();
 
+
         Call call= client.newCall(request);
         call.enqueue(callback);
 
     }
+
     public void post(String url, Object o,Callback callback)  {
         ObjectMapper mapper = new ObjectMapper();
         String json="";
@@ -57,4 +61,5 @@ public class RequestManeger {
         call.enqueue(callback);
 
     }
+
 }

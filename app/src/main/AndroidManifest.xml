@@ -27,6 +27,7 @@
         <activity
             android:name=".ui.team.GroupMessageActivity"
             android:label="@string/title_activity_group_message" />
+
         <activity android:name=".ui.team.GroupMessageChangeActivity" />
         <activity android:name=".ui.main.newPost.NewPostActivity" />
         <activity android:name=".ui.news.NewsDetailActivity" />
@@ -35,6 +36,7 @@
         <activity android:name=".ui.main.postDetail.PostDetailActivity" />
         <activity android:name=".ui.login.register.NewUserActivity" />
         <activity android:name=".ui.visitingCard.VisitingCardActivity"></activity>
+
     </application>
 
 </manifest>

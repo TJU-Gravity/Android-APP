@@ -8,6 +8,7 @@ import android.util.Log;
 import com.example.yanghan.gravity.MainActivity;
 import com.example.yanghan.gravity.data.model.User;
 import com.example.yanghan.gravity.ui.login.LoginActivity;
+
 import com.example.yanghan.gravity.ui.login.LoginViewModel;
 import com.example.yanghan.gravity.ui.me.MeActivity;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,6 +23,26 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class LoginManager {
+
+    Context context=null;
+    User user=null;
+    LoginViewModel loginViewModel=null;
+
+
+import com.example.yanghan.gravity.ui.me.MeActivity;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.IOException;
+
+
+
+import androidx.appcompat.app.AppCompatActivity;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+
+public class LoginManager {
+
 
     Context context=null;
     User user=null;
@@ -45,7 +66,6 @@ public class LoginManager {
         user=new User();
         user.loadUser(context);
         //http请求
-
         return user;
     }
 
@@ -55,6 +75,7 @@ public class LoginManager {
         Intent intent = new Intent(context,LoginActivity.class);
         context.startActivity(intent);
     }
+
 
     public static class LoginReponse
     {
@@ -133,7 +154,9 @@ public class LoginManager {
         String response="";
         LoginCallback callback=new LoginCallback();
         requestManeger.post("http://118.25.41.237:8080/user/login",json,callback);
-
+        user.saveUser(context,true);
+        Activity a=(Activity)context;
+        a.onBackPressed();
 
     }
 
