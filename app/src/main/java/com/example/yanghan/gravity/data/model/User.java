@@ -22,7 +22,7 @@ public class User
     public String loc="";
     public String phonenumber="";
     public String userprivileges="";
-    public String introduction="";
+
 
     public String email="123@example.com";
 
@@ -65,8 +65,6 @@ public class User
         email=sharedPreferences.getString("email","");
         introduction=sharedPreferences.getString("introduction","");
 
-
-       password=sharedPreferences.getString("password","");
 
 
        Log.e("username",username);

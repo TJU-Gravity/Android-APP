@@ -84,7 +84,7 @@ public class NewsListManager {
 
             Result result=Result.mapper(response.body().string());
 
-            if(result!=null&&result.code.equals("400"))
+            if(result!=null&&result.code==400)
             {
                 ((Activity)context).runOnUiThread(new Runnable() {
                     @Override

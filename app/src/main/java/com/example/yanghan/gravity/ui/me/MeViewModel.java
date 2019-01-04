@@ -41,7 +41,7 @@ public class MeViewModel extends ViewModel {
     }
 
 
-    }
+    
 
     public void initUser(Context context)
     {

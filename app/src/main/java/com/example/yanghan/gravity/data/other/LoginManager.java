@@ -22,24 +22,8 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class LoginManager {
-
-    Context context=null;
-    User user=null;
-    LoginViewModel loginViewModel=null;
 
 
-import com.example.yanghan.gravity.ui.me.MeActivity;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.IOException;
-
-
-
-import androidx.appcompat.app.AppCompatActivity;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
 
 public class LoginManager {
 
