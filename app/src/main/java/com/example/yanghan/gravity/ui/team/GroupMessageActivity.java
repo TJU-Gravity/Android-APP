@@ -64,9 +64,10 @@ public class GroupMessageActivity extends AppCompatActivity {
         //TODO something
         GridView gridView = (GridView) findViewById(R.id.team_member);
 
-        //图片数据
-        int[] images = {R.drawable.header, R.drawable.header1, R.drawable.headshot,
-                R.drawable.header, R.drawable.header1, R.drawable.headshot
+
+        int[] images = {R.drawable.header, R.drawable.header, R.drawable.headshot,
+                R.drawable.header, R.drawable.header, R.drawable.headshot
+
                };
         //图片编号
         String[] username={"peter","kate","lucky","honey","boss","mimi"};

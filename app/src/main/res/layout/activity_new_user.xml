@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.me.edit.EditActivity"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:scrollbars="vertical"
+                >
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/colorPrimary"
+                    android:elevation="4dp"
+                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingTop="40dp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+
+                        android:orientation="vertical">
+
+                        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                            android:id="@+id/username_box"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="20dp"
+
+                            android:layout_marginEnd="20dp"
+                            app:labelText="用户名"
+                            >
+
+                            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                                android:id="@+id/title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+
+                        android:orientation="vertical">
+
+                        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                            android:id="@+id/nickname_box"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="20dp"
+
+                            android:layout_marginEnd="20dp"
+                            app:labelText="昵称"
+                            >
+
+                            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                                android:id="@+id/nickname"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                    </LinearLayout>
+
+                    <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+
+                    android:orientation="vertical">
+
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/password_box"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+
+                        android:layout_marginEnd="20dp"
+                        app:labelText="密码"
+
+                        >
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/password"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword"/>
+
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+
+                        android:orientation="vertical">
+
+                        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                            android:id="@+id/email_box"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="20dp"
+
+                            android:layout_marginEnd="20dp"
+                            app:labelText="邮箱"
+
+                            >
+
+                            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                                android:id="@+id/email"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:inputType="textEmailAddress"/>
+
+                        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+
+
+                        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                            android:id="@+id/introduction_box"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+
+                            app:labelText="个人简介"
+                            app:maxCharacters="150"
+                            app:hasClearButton="true"
+                            >
+
+
+                            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                                android:id="@+id/introduction"
+                                android:layout_width="wrap_content"
+                                android:layout_height="200dp"
+                                android:inputType="textMultiLine"
+
+                                />
+
+                        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                    </LinearLayout>
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="20dp">
+                        <Button
+                            android:id="@+id/btn_commit"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="提交"
+
+                            android:gravity="center"
+                            android:textColor="#FFFFFF"
+                            android:background="@color/accent"/>
+                    </FrameLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>

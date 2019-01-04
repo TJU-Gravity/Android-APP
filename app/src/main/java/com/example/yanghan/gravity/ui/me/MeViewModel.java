@@ -29,15 +29,16 @@ import androidx.lifecycle.ViewModel;
 
 public class MeViewModel extends ViewModel {
     // TODO: Implement the ViewModel
-<<<<<<< HEAD
+
     public User user=new User();
-=======
-    public User user;
->>>>>>> 23c7d3b3ec69dcf6812b50acae85e4f21969dd7c
+
+
     private LoginManager loginManager=new LoginManager();
     public MeViewModel()
     {
         super();
+
+    }
 
 
     }
@@ -50,31 +51,14 @@ public class MeViewModel extends ViewModel {
 
 
     }
-
-    public void initUser(Context context)
-    {
-        Log.e("init","user");
-
-        user.loadUser(context);//http请求后废弃
-
-        //user=loginManager.getCurrentUser(this);
-
-
-    }
     public String getImageUrl() {
 
-<<<<<<< HEAD
-        return user.headshot;
-
-=======
-        // return user.headshot;
-        return "https://upload.wikimedia.org/wikipedia/commons/f/fe/Michelle_Borromeo_Actor_Headshots_30.jpg";
->>>>>>> 23c7d3b3ec69dcf6812b50acae85e4f21969dd7c
+        return "http://gravity-image-1256225215.cos.ap-shanghai.myqcloud.com/headshot/default.jpg";
     }
 
     @BindingAdapter({"bind:imageUrl"})
     public static void loadImage(CircleImageView view, String imageUrl) {
-        Log.e("url",imageUrl);
+       if(imageUrl!=null)
 
         Glide.with(view.getContext())
                 .load(imageUrl)

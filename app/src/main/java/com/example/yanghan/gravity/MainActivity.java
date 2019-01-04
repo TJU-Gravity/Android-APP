@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -14,7 +15,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
+import com.example.yanghan.gravity.data.model.User;
+import com.example.yanghan.gravity.data.other.LoginManager;
+import com.example.yanghan.gravity.data.other.SearchManager;
+import com.example.yanghan.gravity.ui.commonInterface.ContextService;
 import com.example.yanghan.gravity.ui.me.MeActivity;
 import com.example.yanghan.gravity.ui.news.NewsFragment;
 import com.example.yanghan.gravity.ui.main.MainFragment;
@@ -31,10 +37,12 @@ import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ContextService {
     private  Drawer result=null;
     private AccountHeader headerResult=null;
     private SearchView searchView;
+    private LoginManager loginManager=new LoginManager();
+    private User user=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +52,20 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
-
+        initUser();
 
         //------------------------------------------------
         //侧边栏——简约
+        IProfile profile;
+        if(user!=null)
+        {
+            profile = new ProfileDrawerItem().withName(user.nickname).withEmail(user.email);
+        }
+        else
+        {
+            profile = new ProfileDrawerItem().withName("未登录");
+        }
 
-        IProfile profile = new ProfileDrawerItem().withName("Mike Penz").withEmail("mikepenz@gmail.com").withIcon(getResources().getDrawable(R.drawable.headshot));
         headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withHeaderBackground(getResources().getDrawable(R.drawable.header_test))
@@ -119,14 +135,39 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             changeFragment(new MainFragment());
         }
+
+    }
+    void initUser()
+    {
+        if(loginManager.isLogin(this))
+        {
+            user=loginManager.getCurrentUser(this);
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        initUser();
+        IProfile profile;
+        if(user!=null)
+        {
+            profile = new ProfileDrawerItem().withName(user.nickname).withEmail(user.email);
+        }
+        else
+        {
+            profile = new ProfileDrawerItem().withName("未登录");
+        }
+        headerResult.clear();
+        headerResult.addProfiles(profile);
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         //add the values which need to be saved from the drawer to the bundle
-        outState = result.saveInstanceState(outState);
+//        outState = result.saveInstanceState(outState);
         //add the values which need to be saved from the accountHeader to the bundle
-        outState = headerResult.saveInstanceState(outState);
+  //      outState = headerResult.saveInstanceState(outState);
         super.onSaveInstanceState(outState);
     }
 
@@ -156,11 +197,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 // Toast like print
-                //UserFeedback.show( "SearchOnQueryTextSubmit: " + query);
-                if( ! searchView.isIconified()) {
-                    searchView.setIconified(true);
-                }
-                myActionMenuItem.collapseActionView();
+                Log.e( "onQueryTextSubmit: ","!" );
+                SearchManager searchManager=new SearchManager();
+                searchManager.searchUser(query,(ContextService) getContext());
                 return false;
             }
             @Override
@@ -175,5 +214,11 @@ public class MainActivity extends AppCompatActivity {
         });
         return true;
 
+    }
+
+
+    @Override
+    public Context getContext() {
+        return this;
     }
 }

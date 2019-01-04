@@ -11,13 +11,10 @@ import java.util.Date;
 
 public class News {
 
-<<<<<<< HEAD
-    public int newsid=0;
     public String title="";
-=======
-    public int newsID=0;
-    public  String title="";
->>>>>>> 23c7d3b3ec69dcf6812b50acae85e4f21969dd7c
+
+    public int newsid=0;
+
     public String newsbody="";
     public String editorid="";
     public String sponsor="";

@@ -15,11 +15,12 @@ import android.view.MenuItem;
 import com.example.yanghan.gravity.R;
 import com.example.yanghan.gravity.data.other.LoginManager;
 import com.example.yanghan.gravity.databinding.ActivityFavoritesBinding;
+import com.example.yanghan.gravity.ui.commonInterface.RecyclerViewService;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView;
 
-public class FavoritesActivity extends AppCompatActivity
+public class FavoritesActivity extends AppCompatActivity implements RecyclerViewService
 {
     private Drawer result = null;
     private FavoritesViewModel mViewModel;
@@ -59,12 +60,6 @@ public class FavoritesActivity extends AppCompatActivity
 
         initRecyclerView();
 
-
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 23c7d3b3ec69dcf6812b50acae85e4f21969dd7c
     }
 
     private void initRecyclerView() {
@@ -81,6 +76,9 @@ public class FavoritesActivity extends AppCompatActivity
             @Override
             public void onRefresh() {
                 Log.e("Refresh","!");
+
+
+                mRecyclerView.setPullLoadMoreCompleted();
 
             }
 
@@ -120,5 +118,24 @@ public class FavoritesActivity extends AppCompatActivity
     }
 
 
+    @Override
+    public void stopLoading() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mRecyclerView.setPullLoadMoreCompleted();
+            }
+        });
 
+    }
+
+    @Override
+    public void notifyDataChanged() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mAdapter.notifyDataSetChanged();
+            }
+        });
+    }
 }

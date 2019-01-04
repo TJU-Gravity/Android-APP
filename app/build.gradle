@@ -55,12 +55,12 @@ dependencies {
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.7'
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.7'
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.9.7'
-<<<<<<< HEAD
+
 
     compile 'com.squareup.okhttp3:okhttp:3.12.0'
-=======
->>>>>>> 23c7d3b3ec69dcf6812b50acae85e4f21969dd7c
 
     compile 'com.wuxiaolong.pullloadmorerecyclerview:library:1.1.2'
+    compile 'com.allattentionhere:fabulousfilter:0.0.5'
+
 
 }
