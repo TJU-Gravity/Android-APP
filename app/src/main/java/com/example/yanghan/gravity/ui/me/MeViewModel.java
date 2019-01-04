@@ -29,11 +29,16 @@ import androidx.lifecycle.ViewModel;
 
 public class MeViewModel extends ViewModel {
     // TODO: Implement the ViewModel
+
     public User user=new User();
+
+
     private LoginManager loginManager=new LoginManager();
     public MeViewModel()
     {
         super();
+
+    }
 
 
     }
@@ -49,7 +54,6 @@ public class MeViewModel extends ViewModel {
     public String getImageUrl() {
 
         return "http://gravity-image-1256225215.cos.ap-shanghai.myqcloud.com/headshot/default.jpg";
-
     }
 
     @BindingAdapter({"bind:imageUrl"})

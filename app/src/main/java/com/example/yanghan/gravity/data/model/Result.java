@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Result {
+
     public int code;
     public Page data=new Page();
     public String message;
@@ -33,3 +34,4 @@ public class Result {
 
     }
 }
+

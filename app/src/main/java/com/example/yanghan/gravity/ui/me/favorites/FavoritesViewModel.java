@@ -31,14 +31,17 @@ public class FavoritesViewModel extends ViewModel  implements FavoritesAdapter.F
     private FavoritesActivity favoritesActivity;
     private Page page;
     private RecyclerViewService recyclerViewService;
+
     public FavoritesViewModel(FavoritesActivity f)
     {
         super();
 
         Log.e("init","Favorites");
         favoritesActivity=f;
+
         recyclerViewService=(RecyclerViewService)f;
         initNews();
+
 
     }
     public static class ListParam
@@ -130,6 +133,7 @@ public class FavoritesViewModel extends ViewModel  implements FavoritesAdapter.F
             Toast.makeText(favoritesActivity, "到底了", Toast.LENGTH_SHORT).show();
             recyclerViewService.stopLoading();
         }
+
     }
     @Override
     public void onNewsClicked(FavoritesItemViewModel news) {

@@ -56,8 +56,9 @@ public class FavoritesActivity extends AppCompatActivity implements RecyclerView
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(false);
 
-        initRecyclerView();
 
+
+        initRecyclerView();
 
     }
 
@@ -75,7 +76,10 @@ public class FavoritesActivity extends AppCompatActivity implements RecyclerView
             @Override
             public void onRefresh() {
                 Log.e("Refresh","!");
+
+
                 mRecyclerView.setPullLoadMoreCompleted();
+
             }
 
             @Override

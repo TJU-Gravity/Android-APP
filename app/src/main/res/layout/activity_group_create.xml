@@ -109,7 +109,9 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
+
                 android:layout_height="100dp"
+
                 android:orientation="horizontal">
 
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
@@ -120,7 +122,9 @@
                     android:layout_marginStart="20dp"
 
                     android:layout_marginEnd="20dp"
+
                     app:labelText="添加初始成员">
+
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/member_note"
@@ -136,7 +140,11 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+
                 android:gravity="center_vertical|center_horizontal"
+
+                android:gravity="bottom|center_horizontal"
+
                 android:orientation="vertical">
 
                 <Button
