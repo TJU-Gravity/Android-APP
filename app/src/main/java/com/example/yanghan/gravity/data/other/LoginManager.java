@@ -10,6 +10,7 @@ import com.example.yanghan.gravity.data.model.User;
 import com.example.yanghan.gravity.ui.login.LoginActivity;
 import com.example.yanghan.gravity.ui.login.LoginViewModel;
 import com.example.yanghan.gravity.ui.me.MeActivity;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
@@ -28,7 +29,7 @@ public class LoginManager {
     LoginViewModel loginViewModel=null;
 
     //是否登录
-    public boolean isLogin(Context context)
+    public static boolean isLogin(Context context)
     {
         User user=new User();
 
@@ -58,8 +59,11 @@ public class LoginManager {
 
     public static class LoginReponse
     {
+        @JsonProperty(value = "code")
         String code="";
+        @JsonProperty(value = "data")
         User data=null;
+        @JsonProperty(value = "message")
         String message="";
     }
 
@@ -132,7 +136,7 @@ public class LoginManager {
         RequestManeger requestManeger=new RequestManeger();
         String response="";
         LoginCallback callback=new LoginCallback();
-        requestManeger.post("http://118.25.41.237:8080/user/login",json,callback);
+        requestManeger.post("http://100.67.7.66:8080/user/login",json,callback);
 
 
     }

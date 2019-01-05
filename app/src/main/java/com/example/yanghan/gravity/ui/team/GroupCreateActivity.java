@@ -24,9 +24,12 @@ import com.example.yanghan.gravity.R;
 import com.example.yanghan.gravity.data.model.Team;
 import com.example.yanghan.gravity.data.model.User;
 import com.example.yanghan.gravity.data.other.RequestManeger;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
+
+import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -45,8 +48,11 @@ public class GroupCreateActivity extends AppCompatActivity {
 
 
     class TeamCreateResponse {
-
+        @JsonProperty(value = "code")
         String code = "";
+        @JsonProperty(value = "data")
+        String data="";
+        @JsonProperty(value = "message")
         String message = "";
     }
 
@@ -60,23 +66,25 @@ public class GroupCreateActivity extends AppCompatActivity {
 
         @Override
         public void onResponse(Call call, Response response) throws IOException {
-//
-            Log.e("all the data2: ", response.body().string());
-            ObjectMapper mapper = new ObjectMapper();
-            TeamCreateResponse createResponse = null;
-//        loginResponse=mapper.readValue(response.body().string(),LoginResponse.class);
-//        Log.e("all the data: ",loginResponse.toString());
-//        Log.e("codeforme:",loginResponse.code);
-//        Log.e("message",loginResponse.message);
-//        Log.e("data",mapper.writeValueAsString(loginResponse.data));
-        if("success".equals(createResponse.message))
-        {
-            GroupMessageActivity.groupname=name.getText().toString();
-            // GroupMessageActivity.associatedevent=match.getText().toString();
-            GroupMessageActivity.teamprofile=profile.getText().toString();
-            Intent intent=new Intent(GroupCreateActivity.this,GroupMessageActivity.class);
-            startActivity(intent);
-        }
+            try{
+                JSONObject object = new JSONObject(response.body().string());
+                String result= object.getString("code");
+                Log.e("code: ", result);
+                if("200".equals(result)){
+
+                    Intent intent=new Intent(GroupCreateActivity.this,TeamActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Log.e("aiya", "这里有问题");
+                }
+            }catch (Exception e)
+            {
+                Log.e("error",e.getMessage());
+            }
+
+
+
 
         }
     }
@@ -87,7 +95,7 @@ public class GroupCreateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_create);
 
-        User user=new User();
+        final User user=new User();
         user.loadUser(this);
 
 
@@ -114,10 +122,10 @@ public class GroupCreateActivity extends AppCompatActivity {
                 }
                 else{
                     Team team=new Team();
-                    team.teamName=name.getText().toString();
+                    team.teamname=name.getText().toString();
                     team.introduction=profile.getText().toString();
-                    team.TeamMumber.add(member.getText().toString());
-
+                    //team.TeamMumber.add(member.getText().toString());
+                    team.captainid=user.username;
 
                     ObjectMapper mapper = new ObjectMapper();
                     String json="";
@@ -134,7 +142,7 @@ public class GroupCreateActivity extends AppCompatActivity {
                     RequestManeger requestManeger=new RequestManeger();
                     String response="";
                     TeamCreateCallBack callback=new TeamCreateCallBack();
-                    requestManeger.post("http://118.25.41.237:8080/team/createTeam",json,callback);
+                    requestManeger.post("http://100.67.7.66:8080/team/createTeam",json,callback);
 
                 }
             }

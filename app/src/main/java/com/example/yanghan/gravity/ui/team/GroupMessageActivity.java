@@ -33,7 +33,7 @@ public class GroupMessageActivity extends AppCompatActivity {
     private TextView associated_event_message;
     private TextView team_profile_message;
     public static String groupname="火箭队";
-    public static String associatedevent="NBA联赛";
+    public static String associatedevent="暂无赛事关联";
     public static String teamprofile="简介： "+"这是一支十分强大的篮球队伍，深受人们喜爱，曾经创造了非常多的辉煌";
    private Drawer result = null;
 
@@ -140,6 +140,19 @@ public class GroupMessageActivity extends AppCompatActivity {
      Intent intent=new Intent(GroupMessageActivity.this,GroupMessageChangeActivity.class);
      startActivity(intent);
  }
+
+ //返回刷新
+ @Override
+ public void onResume() {
+
+     init();
+     super.onResume();
+
+
+     }
+
+
+
 
 
 

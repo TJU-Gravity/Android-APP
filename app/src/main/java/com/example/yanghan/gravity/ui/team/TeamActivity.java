@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,13 +25,19 @@ import com.example.yanghan.gravity.data.model.TeamList;
 import com.example.yanghan.gravity.data.model.User;
 import com.example.yanghan.gravity.data.other.LoginManager;
 import com.example.yanghan.gravity.data.other.RequestManeger;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, LoadMoreListView.OnRefreshListener{
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -40,12 +47,19 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
     //listview的数据加载器adapter
     private RefreshListAdapter adapter;
     private Drawer result = null;
+    public static List<TeamList> teamlist=new ArrayList<>();
+    public LoadMoreListView listView=null;
+   public static TeamList list=new TeamList();
+   public static Team team =new Team();
+
 
 
     class TeamListResponse {
-
+        @JsonProperty(value = "code")
         String code = "";
-        String data = "";
+        @JsonProperty(value = "data")
+        String data = null;
+        @JsonProperty(value = "message")
         String message = "";
     }
 
@@ -59,16 +73,54 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         @Override
         public void onResponse(Call call, Response response) throws IOException {
-//
-            Log.e("all the data2: ", response.body().string());
-            ObjectMapper mapper = new ObjectMapper();
-            TeamListResponse loginResponse = null;
-//        loginResponse=mapper.readValue(response.body().string(),LoginResponse.class);
-//        Log.e("all the data: ",loginResponse.toString());
-//        Log.e("codeforme:",loginResponse.code);
-//        Log.e("message",loginResponse.message);
-//        Log.e("data",mapper.writeValueAsString(loginResponse.data));
 
+            try{
+                JSONObject object = new JSONObject(response.body().string());
+                String code = object.getString("code");
+                String data = object.getString("data");
+                Log.e("teamname ", data);
+                String message=object.getString("message");
+                if("200".equals(code)){
+                    try {
+                        teamlist.clear();
+                        JSONArray jsonArray = new JSONArray(data);
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject object1 = jsonArray.getJSONObject(i);
+                            TeamList list=new TeamList();
+                            list.teamID= Integer.parseInt(object1.getString("teamid"));
+                            list.teamName = object1.getString("teamname");
+                            list.headshot = object1.getString("headshot");
+                            teamlist.add(list);
+                      //      Log.e("teamna ", teamlist.get(0).teamName);
+                         }
+                        Log.e("team  ",String.valueOf(teamlist.size()));
+                        runOnUiThread(new Runnable() {
+
+                            @Override
+                            public void run() {
+                                initData();
+                                // Stuff that updates the UI
+
+                            }
+                        });
+
+                        }catch(Exception e){
+                        Log.e("error ", e.getMessage());
+
+                        }
+
+                    }
+                    else{
+                    Log.e("error ", code);
+                }
+
+
+
+
+
+            }catch (Exception e){
+                Log.e("error ", "error");
+            }
 
         }
     }
@@ -82,16 +134,25 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         @Override
         public void onResponse(Call call, Response response) throws IOException {
-//
-            Log.e("all the data2: ", response.body().string());
-            ObjectMapper mapper = new ObjectMapper();
-            TeamListResponse loginResponse = null;
-//        loginResponse=mapper.readValue(response.body().string(),LoginResponse.class);
-//        Log.e("all the data: ",loginResponse.toString());
-//        Log.e("codeforme:",loginResponse.code);
-//        Log.e("message",loginResponse.message);
-//        Log.e("data",mapper.writeValueAsString(loginResponse.data));
+            try
+            {
 
+
+                JSONObject object = new JSONObject(response.body().string());
+                String json= object.getString("data");
+                JSONObject object2 = new JSONObject(json);
+                team.teamname= object2.getString("teamname");
+                team.introduction=object2.getString("introduction");
+                team.captainid=object2.getString("captainName");
+                team.teamid=Integer.parseInt(object2.getString("teamid"));
+                GroupMessageActivity.groupname=team.teamname;
+                GroupMessageActivity.teamprofile=team.introduction;
+                Intent intent=new Intent(TeamActivity.this,GroupMessageActivity.class);
+                startActivity(intent);
+            }catch (Exception e)
+            {
+                Log.e("error:",e.getMessage());
+            }
 
         }
     }
@@ -102,6 +163,7 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
         setContentView(R.layout.activity_team);
         User UserForTeam=new User();
         UserForTeam.loadUser(this);
+        //teamlist==new ArrayList();
         ObjectMapper mapper = new ObjectMapper();
         String json="";
         try
@@ -117,7 +179,7 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
         RequestManeger requestManeger=new RequestManeger();
         String response="";
         TeamListCallBack callback=new TeamListCallBack();
-        requestManeger.post("http://118.25.41.237:8080/team/myTeamList",json,callback);
+        requestManeger.post("http://100.67.7.66:8080/team/myTeamList",json,callback);
 
 
 
@@ -141,46 +203,44 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         initView();
         initEvent();
-        initData();
+        //initData();
 
 
 
-        LoadMoreListView listView = (LoadMoreListView) findViewById(R.id.google_and_loadmore_refresh_listview);
+        listView = (LoadMoreListView) findViewById(R.id.google_and_loadmore_refresh_listview);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {//设置监听器
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ListViewItem listViewItem=(ListViewItem) listView.getItemAtPosition(position);
+               // String title=map.get("teamname");
+                list.teamID=Integer.parseInt(listViewItem.getUserComment());
+//                Toast.makeText(getApplicationContext(),
+//                        "你选择了第"+position+"个Item，+itemContent的值是:"+content,
+//                        Toast.LENGTH_SHORT).show();
 
-                //  Toast.makeText(getActivity(), map.get("group_name").toString(), Toast.LENGTH_LONG).show();
-                TeamList teamList=new TeamList();
-                if(teamList.teamID==0)
-                {
-                    Team team=new Team();
-                    team.teamID=teamList.teamID;
-                    team.teamName=teamList.teamName;
-                    ObjectMapper mapper = new ObjectMapper();
-                    String json="";
-                    try
-                    {
-                        json=mapper.writeValueAsString(team);
-                        Log.e("login",json);
-                    }
-                    catch (Exception e)
-                    {
-                        // Log.e("login","json");
-                    }
+                //  Toast.makeText(TeamActivity.this, map.get("group_name").toString(), Toast.LENGTH_LONG).show();
 
-                    RequestManeger requestManeger=new RequestManeger();
-                    String response="";
-                    TeamMessageCallBack callback=new TeamMessageCallBack();
-                    requestManeger.post("http://118.25.41.237:8080/team/teamDetail",json,callback);
+
+
+                        Log.e("","enter here");
+                        String json=String.valueOf(list.teamID);
+//                        String json="\""+String.valueOf(list.teamID)+"\"";
+                        //String json="29";
+                        RequestManeger requestManeger=new RequestManeger();
+                        TeamMessageCallBack callback=new TeamMessageCallBack();
+                        requestManeger.post("http://100.67.7.66:8080/team/teamDetail",json,callback);
+
+
+
+
+
 
                 }
-                Intent intent=new Intent(TeamActivity.this,GroupMessageActivity.class);
-                startActivity(intent);
 
-            }
+
+
         });
 
 
@@ -201,14 +261,16 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
 
 
     private void initData() {
+        Log.e("initdata  ",String.valueOf(teamlist.size()));
         items = new ArrayList<ListViewItem>();
 
         //这里只是模拟10个列表项数据，在现实开发中，listview中的数据都是从服务器获取的。
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < teamlist.size(); i++) {
             ListViewItem item = new ListViewItem();
             item.setUserImg(R.mipmap.ic_launcher);
-            item.setUserName("第"+i+"支队伍");
-            //item.setUserComment("这是google官方一个下拉刷新ListView+自定义ListView上拉加载跟多");
+         //   Log.e("team  ",teamlist.get(i).teamName);
+            item.setUserName(teamlist.get(i).teamName);
+            item.setUserComment(String.valueOf(teamlist.get(i).teamID));
             items.add(item);
         }
 

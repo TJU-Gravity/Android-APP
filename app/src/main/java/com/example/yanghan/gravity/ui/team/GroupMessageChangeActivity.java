@@ -2,6 +2,9 @@ package com.example.yanghan.gravity.ui.team;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 import studio.carbonylgroup.textfieldboxes.ExtendedEditText;
 import studio.carbonylgroup.textfieldboxes.TextFieldBoxes;
 
@@ -18,8 +21,17 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.yanghan.gravity.R;
+import com.example.yanghan.gravity.data.model.Team;
+import com.example.yanghan.gravity.data.other.RequestManeger;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
+
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import static com.example.yanghan.gravity.data.other.LoginManager.user;
 
 public class GroupMessageChangeActivity extends AppCompatActivity {
     private Button button;
@@ -28,6 +40,40 @@ public class GroupMessageChangeActivity extends AppCompatActivity {
     private ExtendedEditText profile;
     private TextFieldBoxes matchconnect;
     private Drawer result = null;
+
+
+
+
+    public class TeamChangeCallBack implements Callback {
+        @Override
+        public void onFailure(Call call, IOException e) {
+            Log.e("request", e.toString());
+
+        }
+
+        @Override
+        public void onResponse(Call call, Response response) throws IOException {
+            try{
+                JSONObject object = new JSONObject(response.body().string());
+                String result= object.getString("code");
+                if("200".equals(result)){
+                    //返回详情页面
+                    Intent intent=new Intent(GroupMessageChangeActivity.this,GroupMessageActivity.class);
+                    startActivity(intent);
+                }
+            }catch (Exception e)
+            {
+                Log.e("error",e.getMessage());
+            }
+
+
+
+
+        }
+    }
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,10 +105,33 @@ public class GroupMessageChangeActivity extends AppCompatActivity {
 
                 }
                 else{
-                    GroupMessageActivity.groupname=name.getText().toString();
-                    GroupMessageActivity.teamprofile=profile.getText().toString();
-                    Intent intent=new Intent(GroupMessageChangeActivity.this,GroupMessageActivity.class);
-                    startActivity(intent);
+
+                    Team team=new Team();
+                    team.teamname=name.getText().toString();
+                    team.introduction=profile.getText().toString();
+                    Log.e("id: ",String.valueOf(TeamActivity.list.teamID));
+                    team.teamid=TeamActivity.list.teamID;
+                    team.captainid=TeamActivity.team.captainid;
+                    //team.TeamMumber.add(member.getText().toString());
+                    //team.captainid=user.username;
+
+                    ObjectMapper mapper = new ObjectMapper();
+                    String json="";
+                    try
+                    {
+                        json=mapper.writeValueAsString(team);
+                        Log.e("login",json);
+                    }
+                    catch (Exception e)
+                    {
+                        // Log.e("login","json");
+                    }
+
+                    RequestManeger requestManeger=new RequestManeger();
+                    String response="";
+                    TeamChangeCallBack callback=new TeamChangeCallBack();
+                    requestManeger.post("http://100.67.7.66:8080/team/updateTeam",json,callback);
+
 
                 }
             }
