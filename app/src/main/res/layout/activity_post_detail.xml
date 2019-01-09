@@ -1,0 +1,210 @@
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.yanghan.gravity.ui.main.postDetail.PostDetailViewModel"/>
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.main.postDetail.PostDetailActivity">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/colorPrimary"
+                    android:elevation="4dp"
+                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                    app:title="" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0dp"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        app:cardCornerRadius="0dp"
+                        app:cardElevation="4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:orientation="vertical"
+                            android:paddingTop="15dp"
+                            android:paddingBottom="15dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:paddingLeft="5dp"
+                                android:paddingTop="5dp"
+                                android:paddingRight="10dp"
+                                android:paddingBottom="0dp"
+                                android:scaleType="centerCrop">
+
+                                <com.example.library.CircleImageView
+                                    android:id="@+id/imageView"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_marginStart="10dp"
+                                    android:gravity="center"
+                                    app:imageUrl="@{viewModel.imageUrl}" />
+
+                                <TextView
+                                    android:id="@+id/poster"
+                                    style="@style/TextStyle.Text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="20dp"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:gravity="start"
+
+                                    android:text="@{viewModel.postDetail.user.nickname}"
+
+                                    tools:text="Rebecca" />
+
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/titleTextView"
+                                style="@style/TextStyle.Heading"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:background="@null"
+
+                                android:gravity="left"
+                                android:text="@{viewModel.postDetail.post.title}"
+
+                                 />
+
+                            <TextView
+                                android:id="@+id/description"
+                                style="@style/TextStyle.Text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:background="@null"
+
+                                android:text="@{viewModel.postDetail.post.postBody}"
+
+                                tools:text="我们打算参加。。。现有成员。。。需要成员。欢迎加入我们的团队。。。" />
+                            <androidx.cardview.widget.CardView
+                                android:visibility="@{viewModel.teamVisibility}"
+                                android:id="@+id/team_card"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:background="@color/white"
+                                android:orientation="vertical"
+                                app:cardCornerRadius="2dp"
+                                app:cardElevation="4dp"
+                                android:onClick="@{(v)->viewModel.goToTeamCard(v)}">
+
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:paddingLeft="5dp"
+                                        android:paddingTop="5dp"
+                                        android:paddingRight="10dp"
+                                        android:paddingBottom="0dp"
+                                        android:scaleType="centerCrop">
+
+                                        <ImageView
+                                            android:id="@+id/teamImageView"
+                                            android:layout_width="40dp"
+                                            android:layout_height="40dp"
+                                            android:layout_marginStart="10dp"
+                                            android:gravity="center"
+                                            android:src="@drawable/gravity_inact" />
+
+                                        <TextView
+                                            android:id="@+id/team_name"
+                                            style="@style/TextStyle.Heading"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="10dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:background="@null"
+                                            android:gravity="start"
+
+                                            android:text="@{viewModel.postDetail.team.teamname}"
+
+                                            tools:text="Rebecca" />
+
+
+                                    </LinearLayout>
+
+
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView
+                        android:id="@+id/recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+
+                        tools:listitem="@layout/item_reply_view"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton2"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:clickable="true"
+                android:onClick="@{(v)->viewModel.onBtnClicked(v)}"
+                app:backgroundTint="@color/colorAccent"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="18dp"
+                android:layout_marginBottom="18dp"
+                app:srcCompat="@drawable/baseline_comment_white_18dp">
+
+            </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+        </RelativeLayout>
+
+    </FrameLayout>
+</layout>

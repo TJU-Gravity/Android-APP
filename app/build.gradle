@@ -56,8 +56,10 @@ dependencies {
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.7'
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.9.7'
 
-    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
 
-    implementation 'com.wuxiaolong.pullloadmorerecyclerview:library:1.1.2'
+    compile 'com.squareup.okhttp3:okhttp:3.12.0'
 
+    compile 'com.wuxiaolong.pullloadmorerecyclerview:library:1.1.2'
+    compile 'com.allattentionhere:fabulousfilter:0.0.5'
+    
 }

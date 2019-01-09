@@ -8,6 +8,7 @@ import android.util.Log;
 import com.example.yanghan.gravity.MainActivity;
 import com.example.yanghan.gravity.data.model.User;
 import com.example.yanghan.gravity.ui.login.LoginActivity;
+
 import com.example.yanghan.gravity.ui.login.LoginViewModel;
 import com.example.yanghan.gravity.ui.me.MeActivity;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,7 +23,11 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
+
+
+
 public class LoginManager {
+
 
     Context context=null;
     public static User user=null;
@@ -42,11 +47,10 @@ public class LoginManager {
     //得到当前用户
     public User getCurrentUser(Context context)
     {
-        User user=new User();
+
+        user=new User();
         user.loadUser(context);
         //http请求
-
-
         return user;
     }
 
@@ -56,6 +60,7 @@ public class LoginManager {
         Intent intent = new Intent(context,LoginActivity.class);
         context.startActivity(intent);
     }
+
 
     public static class LoginReponse
     {
@@ -88,7 +93,7 @@ public class LoginManager {
             LoginReponse loginReponse=null;
             loginReponse=mapper.readValue(response.body().string(),LoginReponse.class);
 
-            if(loginReponse!=null&&loginReponse.code.equals("400"))
+            if(loginReponse!=null&&loginReponse.code=="400")
             {
                 ((Activity)context).runOnUiThread(new Runnable() {
                 @Override
@@ -136,8 +141,12 @@ public class LoginManager {
         RequestManeger requestManeger=new RequestManeger();
         String response="";
         LoginCallback callback=new LoginCallback();
-        requestManeger.post("http://100.67.7.66:8080/user/login",json,callback);
 
+
+        requestManeger.post("http://118.25.41.237:8080/user/login",json,callback);
+        user.saveUser(context,true);
+        Activity a=(Activity)context;
+        a.onBackPressed();
 
     }
 
