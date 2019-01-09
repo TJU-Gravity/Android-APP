@@ -124,7 +124,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg"
-                    android:text="转到赛事" />
+                    android:clickable="true"
+                    android:text="转到赛事"
+                    android:textSize="18sp" />
                 <View
                     android:layout_height="2dp"
                     android:layout_width="match_parent"

@@ -137,14 +137,22 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
         public void onResponse(Call call, Response response) throws IOException {
             try
             {
-              //  Log.e("result: ",response.body().string());
+               // Log.e("result: ",response.body().string());
                 team.TeamMumber.clear();
                 JSONObject object = new JSONObject(response.body().string());
                 String json= object.getString("data");
                 JSONObject object2 = new JSONObject(json);
                 String list=object2.getString("userlist");
+                list = list.replace('"',' ');
+                list = list.replace('[',' ');
+                list = list.replace(']',' ').trim();
 
-                team.TeamMumber.add("1");
+                String [] userlist=list.split(",");
+                for(int i=0;i<userlist.length;i++)
+                {
+                    team.TeamMumber.add(userlist[i]);
+                }
+
                 team.teamname= object2.getString("teamname");
                 team.introduction=object2.getString("introduction");
                 team.captainid=object2.getString("captainName");
