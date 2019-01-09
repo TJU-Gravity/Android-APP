@@ -121,7 +121,9 @@ public class MainFragment extends Fragment implements PostAdapter.PostAdapterLis
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
+
                 mAdapter.notifyDataSetChanged();
+                binding.invalidateAll();
             }
         });
 

@@ -66,6 +66,18 @@ public class NewsFragment extends Fragment {
         imagelist.add(R.drawable.contest_2);
         imagelist.add(R.drawable.contest_3);
 
+        imagelist.add(R.drawable.contest_1);
+        imagelist.add(R.drawable.contest_2);
+        imagelist.add(R.drawable.contest_3);
+
+        imagelist.add(R.drawable.contest_1);
+        imagelist.add(R.drawable.contest_2);
+        imagelist.add(R.drawable.contest_3);
+
+        imagelist.add(R.drawable.contest_1);
+        imagelist.add(R.drawable.contest_2);
+        imagelist.add(R.drawable.contest_3);
+
 
 
         adapter = new  SimpleAdapter(getActivity()

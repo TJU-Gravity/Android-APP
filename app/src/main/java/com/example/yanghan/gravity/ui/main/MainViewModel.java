@@ -133,7 +133,6 @@ public class MainViewModel extends ViewModel implements PostAdapter.PostAdapterL
                         a.post=(PostResult) post;
                         postsArrayList.add(a);
 
-
                     }
 
                 }

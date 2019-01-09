@@ -63,7 +63,7 @@ public class NewsListManager {
     {
         String orderBy="default";
         Integer pages=1;
-        Integer size=1;
+        Integer size=12;
     }
 
     public class ListCallback implements Callback {
