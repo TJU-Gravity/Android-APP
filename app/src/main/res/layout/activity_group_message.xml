@@ -110,7 +110,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
-                   />
+                    />
                 <View
                     android:layout_height="2dp"
                     android:layout_width="match_parent"
@@ -118,6 +118,30 @@
                     android:background="#999999"
 
                     />
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg"
+                    android:text="转到赛事" />
+                <View
+                    android:layout_height="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_margin="16dp"
+                    android:background="#999999"
+
+                    />
+
+                <TextView
+                    android:id="@+id/mumberNote"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/material_drawer_account_header_dropdown"
+                    android:layout_marginRight="5dp"
+                    android:clickable="true"
+                    android:gravity="top|right"
+                    android:text="共8人 >" />
+
 
 
                 <GridLayout
@@ -148,3 +172,6 @@
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+

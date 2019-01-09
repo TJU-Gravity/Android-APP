@@ -137,11 +137,14 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
         public void onResponse(Call call, Response response) throws IOException {
             try
             {
-
-
+              //  Log.e("result: ",response.body().string());
+                team.TeamMumber.clear();
                 JSONObject object = new JSONObject(response.body().string());
                 String json= object.getString("data");
                 JSONObject object2 = new JSONObject(json);
+                String list=object2.getString("userlist");
+
+                team.TeamMumber.add("1");
                 team.teamname= object2.getString("teamname");
                 team.introduction=object2.getString("introduction");
                 team.captainid=object2.getString("captainName");
@@ -375,7 +378,7 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
                 // 通知listview刷新数据完毕,让listview停止刷新,取消加载跟多
                 loadMoreListView.loadMoreComplete();
             }
-        }, 200);
+        }, 10);
     }
 
     @Override
