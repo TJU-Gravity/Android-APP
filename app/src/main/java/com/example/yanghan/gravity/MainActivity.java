@@ -109,13 +109,7 @@ public class MainActivity extends AppCompatActivity implements ContextService {
                                 changeFragment(new MainFragment());
                             } else if (drawerItem.getIdentifier() == 2) {
                                 changeFragment(new NewsFragment());
-                            }else if (drawerItem.getIdentifier() == 3&&LoginManager.isLogin(getApplicationContext())==false) {
-                                //如果未登陆，跳转登陆界面
-                                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                               // Intent intent = new Intent(MainActivity.this, TeamActivity.class);
-                                startActivity(intent);
-                            }
-                            else if (drawerItem.getIdentifier() == 3&&LoginManager.isLogin(getApplicationContext())==true) {
+                            }else  if (drawerItem.getIdentifier() == 3) {
                                 //如果登陆，跳转团队界面
                                 Intent intent = new Intent(MainActivity.this, TeamActivity.class);
                                 // Intent intent = new Intent(MainActivity.this, TeamActivity.class);

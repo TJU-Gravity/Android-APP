@@ -142,7 +142,7 @@ public class GroupCreateActivity extends AppCompatActivity {
                     RequestManeger requestManeger=new RequestManeger();
                     String response="";
                     TeamCreateCallBack callback=new TeamCreateCallBack();
-                    requestManeger.post("http://100.67.7.66:8080/team/createTeam",json,callback);
+                    requestManeger.post("http://118.25.41.237:8080/team/createTeam",json,callback);
 
                 }
             }

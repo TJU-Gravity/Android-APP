@@ -51,6 +51,7 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
     public LoadMoreListView listView=null;
    public static TeamList list=new TeamList();
    public static Team team =new Team();
+    boolean tryToLogin=true;
 
 
 
@@ -158,48 +159,39 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_team);
-        User UserForTeam=new User();
-        UserForTeam.loadUser(this);
-        //teamlist==new ArrayList();
+    protected void onStart() {
+        super.onStart();
+        LoginManager loginManager=new LoginManager();
+        if(!loginManager.isLogin(this)) {
+            if (tryToLogin)
+            {
+                loginManager.loginPage(this);
+                tryToLogin=false;
+            }
+            else
+            {
+                tryToLogin=true;
+                onBackPressed();
+            }
+        }
+
         ObjectMapper mapper = new ObjectMapper();
         String json="";
         try
         {
-            json=mapper.writeValueAsString(UserForTeam);
+            json=mapper.writeValueAsString(loginManager.getCurrentUser(this));
             Log.e("login",json);
         }
         catch (Exception e)
         {
-           // Log.e("login","json");
+            // Log.e("login","json");
         }
 
         RequestManeger requestManeger=new RequestManeger();
         String response="";
         TeamListCallBack callback=new TeamListCallBack();
-        requestManeger.post("http://100.67.7.66:8080/team/myTeamList",json,callback);
+        requestManeger.post("http://118.25.41.237:8080/team/myTeamList",json,callback);
 
-
-
-
-
-
-
-     //   LoginManager.loginPage(TeamActivity.this);
-
-
-        Toolbar team_toolbar = (Toolbar) findViewById(R.id.team_toolbar);
-        setSupportActionBar(team_toolbar);
-        result = new DrawerBuilder()
-                .withActivity(this)
-                .withSavedInstance(savedInstanceState)
-                .withFullscreen(true)
-                .build();
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(false);
 
         initView();
         initEvent();
@@ -214,7 +206,7 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ListViewItem listViewItem=(ListViewItem) listView.getItemAtPosition(position);
-               // String title=map.get("teamname");
+                // String title=map.get("teamname");
                 list.teamID=Integer.parseInt(listViewItem.getUserComment());
 //                Toast.makeText(getApplicationContext(),
 //                        "你选择了第"+position+"个Item，+itemContent的值是:"+content,
@@ -224,26 +216,45 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
 
 
 
-                        Log.e("","enter here");
-                        String json=String.valueOf(list.teamID);
+                Log.e("","enter here");
+                String json=String.valueOf(list.teamID);
 //                        String json="\""+String.valueOf(list.teamID)+"\"";
-                        //String json="29";
-                        RequestManeger requestManeger=new RequestManeger();
-                        TeamMessageCallBack callback=new TeamMessageCallBack();
-                        requestManeger.post("http://100.67.7.66:8080/team/teamDetail",json,callback);
+                //String json="29";
+                RequestManeger requestManeger=new RequestManeger();
+                TeamMessageCallBack callback=new TeamMessageCallBack();
+                requestManeger.post("http://118.25.41.237:8080/team/teamDetail",json,callback);
 
 
 
 
 
 
-                }
+            }
 
 
 
         });
 
 
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_team);
+
+
+
+        Toolbar team_toolbar = (Toolbar) findViewById(R.id.team_toolbar);
+        setSupportActionBar(team_toolbar);
+        result = new DrawerBuilder()
+                .withActivity(this)
+                .withSavedInstance(savedInstanceState)
+                .withFullscreen(true)
+                .build();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(false);
 
 
         FloatingActionButton fab = ( FloatingActionButton )findViewById(R.id.floatingActionButton);
@@ -257,6 +268,10 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
 
             }
         });
+
+
+
+
     }
 
 

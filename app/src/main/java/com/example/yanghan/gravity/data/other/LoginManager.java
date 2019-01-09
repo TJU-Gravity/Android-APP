@@ -34,7 +34,7 @@ public class LoginManager {
     LoginViewModel loginViewModel=null;
 
     //是否登录
-    public static boolean isLogin(Context context)
+    public boolean isLogin(Context context)
     {
         User user=new User();
 
@@ -55,7 +55,7 @@ public class LoginManager {
     }
 
     //跳转登录页面
-    public static void loginPage(Context context)
+    public void loginPage(Context context)
     {
         Intent intent = new Intent(context,LoginActivity.class);
         context.startActivity(intent);

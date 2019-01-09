@@ -81,8 +81,7 @@ public class LoginActivity extends AppCompatActivity {
     {
         Toast.makeText(this,"登录成功",Toast.LENGTH_SHORT).show();
         this.onBackPressed();
-        Intent intent = new Intent(LoginActivity.this, TeamActivity.class);
-        startActivity(intent);
+
     }
 
     public void invaliad()
