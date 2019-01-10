@@ -76,7 +76,7 @@ public class GroupCreateActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else{
-                    Log.e("aiya", "这里有问题");
+                    Toast.makeText(GroupCreateActivity.this, "请求失败", Toast.LENGTH_LONG).show();
                 }
             }catch (Exception e)
             {

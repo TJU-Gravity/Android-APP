@@ -64,6 +64,9 @@ public class GroupMessageChangeActivity extends AppCompatActivity {
                     Intent intent=new Intent(GroupMessageChangeActivity.this,GroupMessageActivity.class);
                     startActivity(intent);
                 }
+                else{
+                    Toast.makeText(GroupMessageChangeActivity.this, "请求失败", Toast.LENGTH_LONG).show();
+                }
             }catch (Exception e)
             {
                 Log.e("error",e.getMessage());

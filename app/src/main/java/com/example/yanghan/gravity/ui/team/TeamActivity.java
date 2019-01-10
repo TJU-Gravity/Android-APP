@@ -111,8 +111,8 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
                         }
 
                     }
-                    else{
-                    Log.e("error ", code);
+                else{
+                    Toast.makeText(TeamActivity.this, "请求失败", Toast.LENGTH_LONG).show();
                 }
 
 
@@ -141,27 +141,34 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
                 team.TeamMumber.clear();
                 JSONObject object = new JSONObject(response.body().string());
                 String json= object.getString("data");
-                JSONObject object2 = new JSONObject(json);
-                String list=object2.getString("userlist");
-                list = list.replace('"',' ');
-                list = list.replace('[',' ');
-                list = list.replace(']',' ').trim();
+                String code=object.getString("code");
+                if("200".equals(code)){
+                    JSONObject object2 = new JSONObject(json);
+                    String list=object2.getString("userlist");
+                    list = list.replace('"',' ');
+                    list = list.replace('[',' ');
+                    list = list.replace(']',' ').trim();
 
-                String [] userlist=list.split(",");
-                for(int i=0;i<userlist.length;i++)
-                {
-                    team.TeamMumber.add(userlist[i]);
+                    String [] userlist=list.split(",");
+                    for(int i=0;i<userlist.length;i++)
+                    {
+                        team.TeamMumber.add(userlist[i]);
+                    }
+
+                    team.teamname= object2.getString("teamname");
+                    team.introduction=object2.getString("introduction");
+                    team.captainid=object2.getString("captainName");
+                    team.teamid=Integer.parseInt(object2.getString("teamid"));
+                    team.memberNum=Integer.parseInt(object2.getString("membernum"));
+                    GroupMessageActivity.groupname=team.teamname;
+                    GroupMessageActivity.teamprofile=team.introduction;
+                    Intent intent=new Intent(TeamActivity.this,GroupMessageActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                      Toast.makeText(TeamActivity.this, "请求失败", Toast.LENGTH_LONG).show();
                 }
 
-                team.teamname= object2.getString("teamname");
-                team.introduction=object2.getString("introduction");
-                team.captainid=object2.getString("captainName");
-                team.teamid=Integer.parseInt(object2.getString("teamid"));
-                team.memberNum=Integer.parseInt(object2.getString("membernum"));
-                GroupMessageActivity.groupname=team.teamname;
-                GroupMessageActivity.teamprofile=team.introduction;
-                Intent intent=new Intent(TeamActivity.this,GroupMessageActivity.class);
-                startActivity(intent);
             }catch (Exception e)
             {
                 Log.e("error:",e.getMessage());
