@@ -126,7 +126,7 @@ public class GroupCreateActivity extends AppCompatActivity {
                     team.introduction=profile.getText().toString();
                     //team.TeamMumber.add(member.getText().toString());
                     team.captainid=user.username;
-
+                    team.memberNum=1;
                     ObjectMapper mapper = new ObjectMapper();
                     String json="";
                     try

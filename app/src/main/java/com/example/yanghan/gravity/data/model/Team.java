@@ -11,7 +11,7 @@ public class Team {
     public String teamname="";
     public String captainid="";
 
-    public int memberNum=1;
+    public int memberNum;
    // public String AssociateMatch;
     public Date createdate= new Date();
     public ArrayList<String> TeamMumber=new ArrayList<>();

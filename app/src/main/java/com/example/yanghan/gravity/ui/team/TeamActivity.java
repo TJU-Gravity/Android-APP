@@ -52,7 +52,7 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
    public static TeamList list=new TeamList();
    public static Team team =new Team();
     boolean tryToLogin=true;
-
+    private int listCount=0;
 
 
     class TeamListResponse {
@@ -157,6 +157,7 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
                 team.introduction=object2.getString("introduction");
                 team.captainid=object2.getString("captainName");
                 team.teamid=Integer.parseInt(object2.getString("teamid"));
+                team.memberNum=Integer.parseInt(object2.getString("membernum"));
                 GroupMessageActivity.groupname=team.teamname;
                 GroupMessageActivity.teamprofile=team.introduction;
                 Intent intent=new Intent(TeamActivity.this,GroupMessageActivity.class);
@@ -287,17 +288,19 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
 
 
     private void initData() {
+        listCount=0;
         Log.e("initdata  ",String.valueOf(teamlist.size()));
         items = new ArrayList<ListViewItem>();
 
         //这里只是模拟10个列表项数据，在现实开发中，listview中的数据都是从服务器获取的。
-        for (int i = 0; i < teamlist.size(); i++) {
+        for (int i = 0; i < teamlist.size()&&i<5; i++) {
             ListViewItem item = new ListViewItem();
             item.setUserImg(R.mipmap.ic_launcher);
          //   Log.e("team  ",teamlist.get(i).teamName);
             item.setUserName(teamlist.get(i).teamName);
             item.setUserComment(String.valueOf(teamlist.get(i).teamID));
             items.add(item);
+            listCount++;
         }
 
         //为listview配置adapter
@@ -358,13 +361,16 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
      */
     private void setRefreshData() {
         //这里只是模拟3个列表项数据，在现实开发中，listview中的数据都是从服务器获取的。
-        for (int i = 0; i < 3; i++) {
-            ListViewItem item = new ListViewItem();
-            item.setUserImg(R.mipmap.ic_launcher);
-            item.setUserName("seven" + i);
-           // item.setUserComment("这是一个下拉刷新，上拉加载更多的ListView");
-            items.add(item);
+        if(listCount<teamlist.size()){
+            for (int i = listCount; i < (3+listCount)&&i<teamlist.size(); i++) {
+                ListViewItem item = new ListViewItem();
+                item.setUserImg(R.mipmap.ic_launcher);
+                item.setUserName(teamlist.get(i).teamName);
+                item.setUserComment(String.valueOf(teamlist.get(i).teamID));
+                items.add(item);
+            }
         }
+
     }
 
     /**
@@ -386,7 +392,7 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
                 // 通知listview刷新数据完毕,让listview停止刷新,取消加载跟多
                 loadMoreListView.loadMoreComplete();
             }
-        }, 10);
+        }, 200);
     }
 
     @Override

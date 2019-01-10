@@ -40,7 +40,7 @@ public class GroupMessageChangeActivity extends AppCompatActivity {
     private ExtendedEditText profile;
     private TextFieldBoxes matchconnect;
     private Drawer result = null;
-
+    private Team team=new Team();
 
 
 
@@ -58,6 +58,9 @@ public class GroupMessageChangeActivity extends AppCompatActivity {
                 String result= object.getString("code");
                 if("200".equals(result)){
                     //返回详情页面
+                    GroupMessageActivity.groupname=team.teamname;
+                    GroupMessageActivity.teamprofile=team.introduction;
+                    GroupMessageActivity.associatedevent=match.getText().toString();
                     Intent intent=new Intent(GroupMessageChangeActivity.this,GroupMessageActivity.class);
                     startActivity(intent);
                 }
@@ -106,12 +109,14 @@ public class GroupMessageChangeActivity extends AppCompatActivity {
                 }
                 else{
 
-                    Team team=new Team();
+
                     team.teamname=name.getText().toString();
                     team.introduction=profile.getText().toString();
-                    Log.e("id: ",String.valueOf(TeamActivity.list.teamID));
+                    //Log.e("id: ",String.valueOf(TeamActivity.list.teamID));
                     team.teamid=TeamActivity.list.teamID;
                     team.captainid=TeamActivity.team.captainid;
+                    team.memberNum=TeamActivity.team.memberNum;
+                    //team.memberNum=1;
                     //team.TeamMumber.add(member.getText().toString());
                     //team.captainid=user.username;
 
