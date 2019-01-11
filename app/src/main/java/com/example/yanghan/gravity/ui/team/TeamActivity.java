@@ -375,6 +375,7 @@ public class TeamActivity extends AppCompatActivity implements SwipeRefreshLayou
                 item.setUserName(teamlist.get(i).teamName);
                 item.setUserComment(String.valueOf(teamlist.get(i).teamID));
                 items.add(item);
+                listCount++;
             }
         }
 

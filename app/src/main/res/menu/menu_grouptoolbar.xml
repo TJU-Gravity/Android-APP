@@ -6,6 +6,10 @@
         android:id="@+id/action_change"
         android:title="修改信息"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/quitTeam"
+        android:title="退出团队"
+        app:showAsAction="never" />
 
 
 
