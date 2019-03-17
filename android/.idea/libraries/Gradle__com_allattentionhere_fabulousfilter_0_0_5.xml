@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.allattentionhere:fabulousfilter-0.0.5">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-fabulousfilter-0.0.5.aar/ff6985d0c2486ba0cfd4254d8c243335/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-fabulousfilter-0.0.5.aar/ff6985d0c2486ba0cfd4254d8c243335/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.allattentionhere/fabulousfilter/0.0.5/2cdf808263645f9e044ac75e86fc4386aa255eea/fabulousfilter-0.0.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
