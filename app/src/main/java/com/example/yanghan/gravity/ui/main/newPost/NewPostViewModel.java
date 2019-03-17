@@ -4,17 +4,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-import com.example.yanghan.gravity.R;
 import com.example.yanghan.gravity.data.model.Post;
 import com.example.yanghan.gravity.data.model.ResponseResult;
 import com.example.yanghan.gravity.data.model.Team;
-import com.example.yanghan.gravity.data.model.User;
 import com.example.yanghan.gravity.ui.commonInterface.ContextService;
-import com.example.yanghan.gravity.data.other.LoginManager;
+import com.example.yanghan.gravity.data.managers.LoginManager;
 import com.example.yanghan.gravity.ui.commonInterface.MultiResponse;
-import com.example.yanghan.gravity.data.other.RequestManeger;
+import com.example.yanghan.gravity.data.managers.RequestManeger;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
@@ -57,7 +54,7 @@ public class NewPostViewModel extends ViewModel {
         Param param=new Param();
         param.username=loginManager.getCurrentUser(contextService.getContext()).username;
         RequestManeger requestManeger=new RequestManeger();
-        requestManeger.post("http://118.25.41.237:8080/team/myteams", param, new Callback() {
+        requestManeger.post("/team/myteams", param, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e("onFailure: ", e.toString());
@@ -120,7 +117,7 @@ public class NewPostViewModel extends ViewModel {
             Log.e("json",e.toString());
         }
 
-        requestManeger.post("http://118.25.41.237:8080/post/add", json, new Callback() {
+        requestManeger.post("/post/add", json, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e( "onFailure: ",e.toString() );

@@ -5,14 +5,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.yanghan.gravity.R;
 import com.example.yanghan.gravity.data.model.ResponseResult;
 import com.example.yanghan.gravity.data.model.User;
-import com.example.yanghan.gravity.data.other.RequestManeger;
+import com.example.yanghan.gravity.data.managers.RequestManeger;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;

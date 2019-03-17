@@ -3,13 +3,10 @@ package com.example.yanghan.gravity.ui.login;
 import androidx.appcompat.app.AlertDialog;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.ViewModelProviders;
 import studio.carbonylgroup.textfieldboxes.SimpleTextChangedWatcher;
 import studio.carbonylgroup.textfieldboxes.TextFieldBoxes;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 
@@ -17,16 +14,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 
-import com.example.yanghan.gravity.MainActivity;
-
 import com.example.yanghan.gravity.R;
-import com.example.yanghan.gravity.data.other.LoginManager;
 import com.example.yanghan.gravity.databinding.ActivityLoginBinding;
-import com.example.yanghan.gravity.databinding.ActivityMeBinding;
-import com.example.yanghan.gravity.ui.me.MeViewModel;
-import com.example.yanghan.gravity.ui.team.TeamActivity;
-import com.mikepenz.materialdrawer.Drawer;
-import com.mikepenz.materialdrawer.DrawerBuilder;
 
 public class LoginActivity extends AppCompatActivity {
 

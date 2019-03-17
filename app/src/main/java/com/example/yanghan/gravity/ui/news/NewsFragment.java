@@ -1,37 +1,23 @@
 package com.example.yanghan.gravity.ui.news;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.lifecycle.ViewModelProviders;
-
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import com.example.yanghan.gravity.R;
 import com.example.yanghan.gravity.data.model.News;
-import com.example.yanghan.gravity.data.other.NewsListManager;
-import com.example.yanghan.gravity.data.other.RequestManeger;
+import com.example.yanghan.gravity.data.managers.NewsListManager;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

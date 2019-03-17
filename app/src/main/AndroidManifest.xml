@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,18 +25,10 @@
             android:theme="@style/Base.Theme.DesignDemo" />
         <activity android:name=".ui.me.favorites.FavoritesActivity" />
         <activity android:name=".ui.me.edit.EditActivity" />
-        <activity
-            android:name=".ui.team.GroupMessageActivity"
-            android:label="@string/title_activity_group_message" />
-        <activity
-            android:name=".ui.team.TeamActivity"
-            android:label="@string/title_activity_team"></activity>
 
 
-        <activity android:name=".ui.team.GroupMessageChangeActivity" />
         <activity android:name=".ui.main.newPost.NewPostActivity" />
         <activity android:name=".ui.news.NewsDetailActivity" />
-        <activity android:name=".ui.team.GroupCreateActivity" />
         <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".ui.main.postDetail.PostDetailActivity" />
         <activity android:name=".ui.login.register.NewUserActivity" />

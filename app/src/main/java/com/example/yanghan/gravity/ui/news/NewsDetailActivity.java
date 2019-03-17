@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 
-import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -26,9 +24,8 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.yanghan.gravity.R;
 import com.example.yanghan.gravity.data.model.News;
 import com.example.yanghan.gravity.data.model.User;
-import com.example.yanghan.gravity.data.other.LoginManager;
-import com.example.yanghan.gravity.data.other.NewsDetailManager;
-import com.example.yanghan.gravity.generated.callback.OnClickListener;
+import com.example.yanghan.gravity.data.managers.LoginManager;
+import com.example.yanghan.gravity.data.managers.NewsDetailManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;

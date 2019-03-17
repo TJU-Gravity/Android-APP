@@ -4,25 +4,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.media.Image;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.library.CircleImageView;
-import com.example.yanghan.gravity.BR;
-import com.example.yanghan.gravity.R;
 import com.example.yanghan.gravity.data.model.User;
-import com.example.yanghan.gravity.data.other.LoginManager;
+import com.example.yanghan.gravity.data.managers.LoginManager;
 import com.example.yanghan.gravity.ui.me.edit.EditActivity;
 import com.example.yanghan.gravity.ui.me.favorites.FavoritesActivity;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 
-
-import androidx.databinding.BaseObservable;
 import androidx.databinding.BindingAdapter;
 import androidx.lifecycle.ViewModel;
 

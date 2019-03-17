@@ -1,11 +1,7 @@
 package com.example.yanghan.gravity.data.model;
 
-import android.util.JsonToken;
 import android.util.Log;
 
-import com.example.yanghan.gravity.data.other.LoginManager;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Result {

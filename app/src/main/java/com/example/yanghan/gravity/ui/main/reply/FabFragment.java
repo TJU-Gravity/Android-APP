@@ -1,11 +1,8 @@
 package com.example.yanghan.gravity.ui.main.reply;
 
 import android.app.Dialog;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -13,19 +10,15 @@ import android.widget.Toast;
 import com.allattentionhere.fabulousfilter.AAH_FabulousFragment;
 import com.example.yanghan.gravity.R;
 import com.example.yanghan.gravity.data.model.Reply;
-import com.example.yanghan.gravity.data.other.LoginManager;
-import com.example.yanghan.gravity.data.other.RequestManeger;
+import com.example.yanghan.gravity.data.managers.LoginManager;
+import com.example.yanghan.gravity.data.managers.RequestManeger;
 import com.example.yanghan.gravity.ui.commonInterface.MultiResponse;
 import com.example.yanghan.gravity.ui.main.postDetail.PostDetailActivity;
 import com.example.yanghan.gravity.ui.main.postDetail.PostDetailViewModel;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.IOException;
 import java.util.Date;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.databinding.DataBindingUtil;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;

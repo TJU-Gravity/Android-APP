@@ -8,7 +8,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 
-import com.example.yanghan.gravity.MainActivity;
 import com.example.yanghan.gravity.databinding.FragmentMainBinding;
 import android.util.Log;
 import android.view.LayoutInflater;

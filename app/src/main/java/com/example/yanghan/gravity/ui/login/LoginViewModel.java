@@ -8,13 +8,10 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.yanghan.gravity.data.model.User;
-import com.example.yanghan.gravity.data.other.LoginManager;
+import com.example.yanghan.gravity.data.managers.LoginManager;
 import com.example.yanghan.gravity.ui.login.register.NewUserActivity;
-import com.example.yanghan.gravity.ui.me.favorites.FavoritesActivity;
 
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.BindingAdapter;
 import androidx.lifecycle.ViewModel;
 
 public class LoginViewModel extends ViewModel {

@@ -1,33 +1,23 @@
 package com.example.yanghan.gravity.ui.main.postDetail;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.yanghan.gravity.data.model.Page;
-import com.example.yanghan.gravity.data.model.Post;
 import com.example.yanghan.gravity.data.model.PostDetail;
 import com.example.yanghan.gravity.data.model.Reply;
 import com.example.yanghan.gravity.data.model.ReplyResult;
-import com.example.yanghan.gravity.data.other.LoginManager;
-import com.example.yanghan.gravity.data.other.RequestManeger;
+import com.example.yanghan.gravity.data.managers.RequestManeger;
 import com.example.yanghan.gravity.ui.commonInterface.ContextService;
 import com.example.yanghan.gravity.ui.commonInterface.MultiResponse;
 import com.example.yanghan.gravity.ui.commonInterface.RecyclerViewService;
-import com.example.yanghan.gravity.ui.main.PostItemViewModel;
 import com.example.yanghan.gravity.ui.main.reply.FabFragment;
 import com.example.yanghan.gravity.ui.main.reply.ReplyAdapter;
 import com.example.yanghan.gravity.ui.main.reply.ReplyItemViewModel;
-import com.example.yanghan.gravity.ui.me.favorites.FavoritesItemViewModel;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -76,7 +66,7 @@ public class PostDetailViewModel extends ViewModel implements ReplyAdapter.Reply
 
         body.ID= ((PostDetailActivity)contextService.getContext()).getIntent().getIntExtra("ID",0);
         final RequestManeger requestManeger=new RequestManeger();
-        requestManeger.post("http://118.25.41.237:8080/post/detail", body, new Callback() {
+        requestManeger.post("/post/detail", body, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e("onFailure: ", e.toString());

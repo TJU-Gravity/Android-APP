@@ -1,17 +1,14 @@
 package com.example.yanghan.gravity.ui.me.favorites;
 
-import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.example.yanghan.gravity.data.model.News;
 import com.example.yanghan.gravity.data.model.Page;
-import com.example.yanghan.gravity.data.model.PostResult;
 import com.example.yanghan.gravity.data.model.Result;
-import com.example.yanghan.gravity.data.other.LoginManager;
-import com.example.yanghan.gravity.data.other.RequestManeger;
+import com.example.yanghan.gravity.data.managers.LoginManager;
+import com.example.yanghan.gravity.data.managers.RequestManeger;
 import com.example.yanghan.gravity.ui.commonInterface.RecyclerViewService;
-import com.example.yanghan.gravity.ui.main.PostItemViewModel;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

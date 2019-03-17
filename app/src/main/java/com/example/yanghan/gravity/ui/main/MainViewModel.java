@@ -7,27 +7,21 @@ import android.widget.Toast;
 
 
 import com.example.yanghan.gravity.data.model.Page;
-import com.example.yanghan.gravity.data.model.Post;
 import com.example.yanghan.gravity.data.model.PostResult;
 import com.example.yanghan.gravity.data.model.Result;
-import com.example.yanghan.gravity.data.other.LoginManager;
-import com.example.yanghan.gravity.data.other.RequestManeger;
+import com.example.yanghan.gravity.data.managers.LoginManager;
+import com.example.yanghan.gravity.data.managers.RequestManeger;
 import com.example.yanghan.gravity.ui.commonInterface.ContextService;
 import com.example.yanghan.gravity.ui.commonInterface.RecyclerViewService;
 import com.example.yanghan.gravity.ui.main.newPost.NewPostActivity;
 import com.example.yanghan.gravity.ui.main.postDetail.PostDetailActivity;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -107,7 +101,7 @@ public class MainViewModel extends ViewModel implements PostAdapter.PostAdapterL
     {
 
         RequestManeger requestManeger=new RequestManeger();
-        requestManeger.post("http://118.25.41.237:8080/post/list", listParam, new Callback() {
+        requestManeger.post("/post/list", listParam, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e( "onFailure: ", e.toString());

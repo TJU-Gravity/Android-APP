@@ -8,10 +8,9 @@ import android.view.MenuItem;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.example.yanghan.gravity.R;
-import com.example.yanghan.gravity.data.other.LoginManager;
+import com.example.yanghan.gravity.data.managers.LoginManager;
 import com.example.yanghan.gravity.databinding.ActivityMeBinding;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;

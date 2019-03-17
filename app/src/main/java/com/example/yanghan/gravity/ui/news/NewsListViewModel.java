@@ -1,31 +1,22 @@
 package com.example.yanghan.gravity.ui.news;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.yanghan.gravity.data.model.News;
 
-import com.example.yanghan.gravity.data.other.NewsListManager;
-import com.example.yanghan.gravity.data.other.RequestManeger;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.example.yanghan.gravity.data.managers.NewsListManager;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.databinding.BindingAdapter;
 import androidx.lifecycle.ViewModel;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
 
 public class NewsListViewModel extends ViewModel {
 

@@ -3,17 +3,13 @@ package com.example.yanghan.gravity.ui.me.favorites;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.yanghan.gravity.R;
-import com.example.yanghan.gravity.data.other.LoginManager;
 import com.example.yanghan.gravity.databinding.ActivityFavoritesBinding;
 import com.example.yanghan.gravity.ui.commonInterface.RecyclerViewService;
 import com.mikepenz.materialdrawer.Drawer;

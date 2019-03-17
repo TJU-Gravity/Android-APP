@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.library.CircleImageView;
 import com.example.yanghan.gravity.data.model.User;
-import com.example.yanghan.gravity.data.other.SearchManager;
+import com.example.yanghan.gravity.data.managers.SearchManager;
 import com.example.yanghan.gravity.ui.commonInterface.ContextService;
 
 import androidx.databinding.BindingAdapter;

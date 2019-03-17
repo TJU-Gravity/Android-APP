@@ -2,8 +2,6 @@
 
 buildscript {
     ext {
-
-
         setup = [
                 compileSdk: 28,
                 buildTools: "28.0.3",
@@ -20,11 +18,8 @@ buildscript {
         google()
         jcenter()
 
-        maven {
-            url "https://maven.google.com"
-        }
         mavenCentral()
-        maven { url 'https://maven.google.com' }
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.1'
@@ -36,11 +31,18 @@ buildscript {
 
 allprojects {
     repositories {
+
         google()
         jcenter()
-        maven { url 'https://jitpack.io' }
         mavenCentral()
+        maven {
+            // All of React Native (JS, Android binaries) is installed from npm
+            url "$rootDir/RNmodule/node_modules/react-native/android"
+        }
+        maven { url 'https://jitpack.io' }
+
         maven { url 'https://maven.google.com' }
+
     }
 }
 
