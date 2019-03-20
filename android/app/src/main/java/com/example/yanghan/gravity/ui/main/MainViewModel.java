@@ -92,9 +92,9 @@ public class MainViewModel extends ViewModel implements PostAdapter.PostAdapterL
 
     public static class ListParam
     {
-        String sortedBy="";
-        Integer page;
-        Integer size;
+        public String sortedBy="";
+        public Integer page;
+        public Integer size;
     }
 
     private void getPosts(ListParam listParam)

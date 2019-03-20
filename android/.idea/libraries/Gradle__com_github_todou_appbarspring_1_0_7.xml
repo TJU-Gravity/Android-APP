@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.todou:appbarspring-1.0.7">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-appbarspring-1.0.7.aar/f28807b8eb337b9693c6afea9819aebb/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-appbarspring-1.0.7.aar/f28807b8eb337b9693c6afea9819aebb/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-appbarspring-1.0.7.aar/a05877a7d164fed65716bb6ed5595694/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-appbarspring-1.0.7.aar/a05877a7d164fed65716bb6ed5595694/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

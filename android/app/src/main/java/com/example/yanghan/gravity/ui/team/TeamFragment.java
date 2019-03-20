@@ -13,12 +13,17 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.provider.Settings;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 
+import com.example.yanghan.gravity.MainApplication;
+import com.example.yanghan.gravity.data.managers.LoginManager;
 import com.example.yanghan.gravity.ui.MainActivity;
+import com.example.yanghan.gravity.ui.baseClass.BaseReactActivity;
 import com.facebook.react.BuildConfig;
 
 
@@ -26,6 +31,9 @@ import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactRootView;
 
 
+import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.shell.MainReactPackage;
 
 
@@ -36,24 +44,25 @@ public class TeamFragment extends Fragment  {
     private ReactRootView mReactRootView;
     private ReactInstanceManager mReactInstanceManager;
 
-    public static TeamFragment newInstance() {
-        return new TeamFragment();
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-
-        mReactRootView.startReactApplication(mReactInstanceManager, "Test", null);
-
+        LoginManager loginManager=new LoginManager();
+        Log.w("RootView","start");
+        Bundle bundle=new Bundle();
+        bundle.putString("user",loginManager.getCurrentUser(getActivity()).username);
+        mReactRootView.startReactApplication(mReactInstanceManager, "TeamList", bundle);
+        ((BaseReactActivity) (getActivity())).mReactRootView=this.mReactRootView;
         return mReactRootView;
     }
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+
         mReactInstanceManager =
-                ((MainActivity)getActivity()).getReactInstanceManager();
-        mReactRootView = new ReactRootView(getContext());
+                ((BaseReactActivity)getActivity()).mReactInstanceManager;
+       mReactRootView=new ReactRootView(getContext());
 
 
     }
@@ -65,6 +74,16 @@ public class TeamFragment extends Fragment  {
         // TODO: Use the ViewModel
 
     }
+
+    protected void sendEvent(String eventName,
+                             @Nullable WritableMap params) {
+        if (((MainApplication) getActivity().getApplication()).getReactContext() != null) {
+            ((MainApplication) getActivity().getApplication()).getReactContext()
+                    .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+                    .emit(eventName, params);
+        }
+    }
+
 
 
 }

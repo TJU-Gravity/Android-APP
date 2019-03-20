@@ -1,7 +1,10 @@
 package com.example.yanghan.gravity.ui.visitingCard;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+
 import androidx.databinding.DataBindingUtil;
+
 
 
 import android.content.Context;
@@ -17,6 +20,7 @@ public class VisitingCardActivity extends AppCompatActivity implements ContextSe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_visiting_card);
         mViewModel = new VisitingCardViewModel(this);
         binding=DataBindingUtil.setContentView(this,R.layout.activity_visiting_card);

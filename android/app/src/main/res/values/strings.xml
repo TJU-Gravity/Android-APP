@@ -1,5 +1,6 @@
 <resources>
-	<string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">uzyMIqgDXwccO_TITMQtHtUdsuuMbec90f1a-67bd-4842-89dd-25a9181b576c</string>
+
+    <string name="reactNativeCodePush_androidDeploymentKey" moduleConfig="true">uzyMIqgDXwccO_TITMQtHtUdsuuMbec90f1a-67bd-4842-89dd-25a9181b576c</string>
     <string name="app_name">Gravity</string>
 
     <string name="username">Rebecca.971008@gmail.com</string>

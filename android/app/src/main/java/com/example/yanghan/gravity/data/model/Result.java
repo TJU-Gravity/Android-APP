@@ -3,7 +3,8 @@ package com.example.yanghan.gravity.data.model;
 import android.util.Log;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Result {
 
     public int code;

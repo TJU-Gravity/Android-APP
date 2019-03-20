@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.facebook.react:react-native-0.59.1">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.59.1.aar/1306ac844616a61ccd00dbc212e26b6a/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.59.1.aar/c2a57f9add2fde9c177f5a2016e42ac8/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.59.1.aar/1306ac844616a61ccd00dbc212e26b6a/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.59.1.aar/1306ac844616a61ccd00dbc212e26b6a/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.59.1.aar/c2a57f9add2fde9c177f5a2016e42ac8/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-react-native-0.59.1.aar/c2a57f9add2fde9c177f5a2016e42ac8/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$PROJECT_DIR$/../node_modules/react-native/android/com/facebook/react/react-native/0.59.1/react-native-0.59.1-javadoc.jar!/" />

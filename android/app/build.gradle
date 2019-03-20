@@ -1,7 +1,10 @@
 apply plugin: 'com.android.application'
 
+
 android {
     compileSdkVersion 28
+    buildToolsVersion "28.0.3"
+
     defaultConfig {
         applicationId "com.example.yanghan.gravity"
         minSdkVersion 21
@@ -9,10 +12,21 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        splits {
+            abi {
+                enable true
+                reset()
+                include 'x86', 'armeabi-v7a','x86_64'
+                universalApk true
+            }
+
+        }
+
     }
     buildTypes {
         release {
             minifyEnabled false
+            matchingFallbacks = ['release', 'debug']
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -20,11 +34,28 @@ android {
         enabled = true
     }
 }
+subprojects {
+    afterEvaluate {project ->
+        if (project.hasProperty("android")) {
+            android {
+                compileSdkVersion 28     //do this in android/app/build.gradle too
+                buildToolsVersion '28.0.3'  //do this in android/app/build.gradle too
+            }
+        }
+    }
+}
 
 dependencies {
+    compile project(":react-native-shared-preferences")
+    compile project(':react-native-gesture-handler')
+    implementation project(':react-native-reanimated')
+    implementation project(':react-native-vector-icons')
+  
 
+    implementation project(':react-native-gesture-handler')
+    implementation project(':library')
 
-
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
@@ -51,7 +82,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
     implementation 'com.github.HITGIF:TextFieldBoxes:1.4.4'
 
-    implementation project(':library')
+
 
 
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.7'
@@ -64,7 +95,9 @@ dependencies {
     compile 'com.wuxiaolong.pullloadmorerecyclerview:library:1.1.2'
     compile 'com.allattentionhere:fabulousfilter:0.0.5'
 
-    implementation "com.facebook.react:react-native:+" // From node_modules
+    implementation "com.facebook.react:react-native:0.59.1" // From node_modules
+
+    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
 
 }
 

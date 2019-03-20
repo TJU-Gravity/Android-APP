@@ -10,15 +10,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
+import com.example.yanghan.gravity.ui.baseClass.BaseReactActivity;
+import com.example.yanghan.gravity.ui.team.TeamActivity;
+import com.facebook.react.ReactRootView;
+
 
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+
 import com.example.yanghan.gravity.BuildConfig;
 import com.example.yanghan.gravity.R;
 import com.example.yanghan.gravity.data.model.User;
@@ -50,7 +56,7 @@ import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
-public class MainActivity extends AppCompatActivity implements ContextService , DefaultHardwareBackBtnHandler {
+public class MainActivity extends BaseReactActivity implements ContextService {
     private  Drawer result=null;
     private AccountHeader headerResult=null;
     private SearchView searchView;
@@ -58,35 +64,15 @@ public class MainActivity extends AppCompatActivity implements ContextService , 
     private LoginManager loginManager=new LoginManager();
     private User user=null;
 
-    private final int OVERLAY_PERMISSION_REQ_CODE = 1;  // Choose any value
-
-    private ReactInstanceManager mReactInstanceManager;
-    public ReactInstanceManager getReactInstanceManager()
-    {
-        return mReactInstanceManager;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (!Settings.canDrawOverlays(getContext())) {
-                Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                        Uri.parse("package:" + getPackageName()));
-                startActivityForResult(intent, OVERLAY_PERMISSION_REQ_CODE);
-            }
-        }
-        mReactInstanceManager = ReactInstanceManager.builder()
-                .setApplication(getApplication())
-                .setCurrentActivity(this)
-                .setBundleAssetName("index.android.bundle")
-                .setJSMainModulePath("app")
-                .addPackage(new MainReactPackage())
-                .setUseDeveloperSupport(BuildConfig.DEBUG)
-                .setInitialLifecycleState(LifecycleState.RESUMED)
-                .build();
+
+
         Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
@@ -146,7 +132,14 @@ public class MainActivity extends AppCompatActivity implements ContextService , 
                                 changeFragment(new NewsFragment());
                             }else  if (drawerItem.getIdentifier() == 3) {
                                 //如果登陆，跳转团队界面
-                                changeFragment(new TeamFragment());
+                                if(!loginManager.isLogin(getContext()))
+                                    loginManager.loginPage(getContext());
+                                else
+                                    //changeFragment(new TeamFragment());
+                                {
+                                    Intent intent = new Intent(MainActivity.this, TeamActivity.class);
+                                    startActivity(intent);
+                                }
 
                             }else if (drawerItem.getIdentifier() == 4) {
 
@@ -259,20 +252,9 @@ public class MainActivity extends AppCompatActivity implements ContextService , 
         return this;
     }
 
+
     @Override
-    public void invokeDefaultOnBackPressed() {
-        super.onBackPressed();
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == OVERLAY_PERMISSION_REQ_CODE) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (!Settings.canDrawOverlays(this)) {
-                    // SYSTEM_ALERT_WINDOW permission not granted...
-                }
-            }
-        }
-        mReactInstanceManager.onActivityResult(this, requestCode, resultCode, data);
+    protected String getMainModulePath() {
+        return "index";
     }
 }

@@ -1,5 +1,6 @@
 package com.example.yanghan.gravity.ui.main.postDetail;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
@@ -18,6 +19,7 @@ import com.example.yanghan.gravity.ui.commonInterface.RecyclerViewService;
 import com.example.yanghan.gravity.ui.main.reply.FabFragment;
 import com.example.yanghan.gravity.ui.main.reply.ReplyAdapter;
 import com.example.yanghan.gravity.ui.main.reply.ReplyItemViewModel;
+import com.example.yanghan.gravity.ui.team.TeamDetailActivity;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -51,7 +53,7 @@ public class PostDetailViewModel extends ViewModel implements ReplyAdapter.Reply
 
     public static class Body
     {
-        Integer ID=0;
+       public Integer ID=0;
     }
     public static class Result
     {
@@ -106,6 +108,11 @@ public class PostDetailViewModel extends ViewModel implements ReplyAdapter.Reply
     public void goToTeamCard(View v)
     {
         Log.e("goToTeamCard: ", "!");
+        Intent intent = new Intent(contextService.getContext(),TeamDetailActivity.class);
+
+        intent.putExtra("ID",postDetail.team.teamid);
+        contextService.getContext().startActivity(intent);
+
     }
     public void refresh()
     {

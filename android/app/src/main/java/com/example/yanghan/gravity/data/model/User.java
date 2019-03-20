@@ -7,7 +7,8 @@ import android.content.SharedPreferences;
 import android.util.Log;
 
 import java.util.ArrayList;
-
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class User
 {
     public String username="";
