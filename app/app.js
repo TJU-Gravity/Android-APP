@@ -20,7 +20,6 @@ const Navigator = createStackNavigator({
 
 });
 
-
 export class TeamApp extends React.Component {
 
     render() {

@@ -19,6 +19,7 @@ import {
 import { data } from '../data';
 import ToastExample from './ToastExample'
 
+//ToastExample.show('Awesome', ToastExample.SHORT);
 export class TeamList extends React.Component {
 
     state = {

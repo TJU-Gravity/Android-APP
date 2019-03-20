@@ -9,6 +9,7 @@ import * as Screens from './screens/index';
 
 const Navigator = createStackNavigator({
         TeamDetail:{screen: Screens.TeamDetail},
+        Chat: {screen: Screens.Chat},
     },
     {navigationOptions:
         {

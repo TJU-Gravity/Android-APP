@@ -85,7 +85,8 @@ export class TeamDetail extends React.Component {
     };
     onAddUserGroupPressed=()=>
     {
-
+        this.props.navigation.push('Chat');
+        console.log('?');
     };
 
     Who=()=>
